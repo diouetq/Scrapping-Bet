@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Données
+Extraction/
+Old/
+
+# Fichiers de configuration
+.env
