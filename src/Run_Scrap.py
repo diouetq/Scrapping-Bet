@@ -7,9 +7,9 @@ Created on Sat Dec 27 19:10:34 2025
 
 from Excel_builder import build_excel
 
-from Test_sportaza import scrape_sportaza
-from Test_Greenluck import scrape_greenluck
-from Test_Betify import scrape_betify
+from Scrap_Sportaza import scrape_sportaza
+from Scrap_Greenluck import scrape_greenluck
+from Scrap_Betify import scrape_betify
 
 
 # =========================
@@ -19,7 +19,7 @@ from Test_Betify import scrape_betify
 
 def run_sportaza():
     return scrape_sportaza(
-        Id_sport=["1359", "923", "924", "1405", "1406", "1356", "1659"]
+        Id_sport=["1359", "904", "923", "924", "1405", "1406", "1356", "1659"]
     )
 
 
