@@ -3,35 +3,40 @@ name: AlerteOpening_Workflows
 on:
   schedule:
     - cron: '*/5 * * * *'  # toutes les 5 minutes
-  workflow_dispatch:        # permet de lancer manuellement
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupérer le code depuis le repo
       - uses: actions/checkout@v3
 
-      # 2️⃣ Configurer Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer les dépendances
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
 
-      # 4️⃣ Lancer le script d’alerte
-      - name: Lancer le script d'alerte et push data.json
+      # --- 1️⃣ Télécharger le data.json du dernier run ---
+      - name: Télécharger artifact précédent
+        uses: actions/download-artifact@v3
+        with:
+          name: data-json
+          path: .
+
+      # --- 2️⃣ Lancer le script ---
+      - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GH_PAT: ${{ secrets.GH_PAT }}       # token GitHub pour push automatique
-        run: |
-          # Configurer Git pour push
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Lancer le script
-          python src/AlerteOpening.py
+          DATA_FILE: data.json
+        run: python src/AlerteOpening.py
+
+      # --- 3️⃣ Uploader le data.json mis à jour ---
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: data-json
+          path: data.json
