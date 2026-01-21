@@ -16,8 +16,8 @@ DATA_FILE = BASE_DIR.parent / "data.json"
 
 # Sports par défaut par bookmaker
 SPORTS_SPORTAZA = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
-SPORTS_BETIFY   = ["43","44","46"]
-SPORTS_GREENLUCK= ["16","27","28"]
+SPORTS_BETIFY   = ["17","22","43", "44","45", "46", "48"]
+SPORTS_GREENLUCK= ["14", "15", "16", "17", "27","28","31", "32"]
 
 # --- HELPERS --- #
 def load_data():
