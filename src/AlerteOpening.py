@@ -16,8 +16,8 @@ DATA_FILE = BASE_DIR.parent / "data.json"
 
 # Sports par défaut par bookmaker
 SPORTS_SPORTAZA = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
-SPORTS_BETIFY   = ["17","22","43", "44","45", "46", "48"]
-SPORTS_GREENLUCK= ["14", "15", "16", "17", "27","28","31", "32"]
+SPORTS_BETIFY   = ["17","22","43","44","45","46","48"]
+SPORTS_GREENLUCK= ["14","15","16","17","27","28","31","32"]
 
 # --- HELPERS --- #
 def load_data():
@@ -34,15 +34,26 @@ def send_telegram_message(msg):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
 
+def safe_scrape(scrape_func, sports):
+    """Appel sécurisé d’un scraper, retourne toujours un DataFrame"""
+    try:
+        df = scrape_func(sports)
+        if df is None or df.empty:
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+        return df
+    except Exception as e:
+        print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
+        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+
 # --- MAIN --- #
 def main():
     old_data = load_data()
     old_comp = old_data.get("competitions", [])
 
-    # 1️⃣ Scraper tous les bookmakers
-    df_sportaza = scrape_sportaza(SPORTS_SPORTAZA)
-    df_betify   = scrape_betify(SPORTS_BETIFY)
-    df_greenluck= scrape_greenluck(SPORTS_GREENLUCK)
+    # 1️⃣ Scraper tous les bookmakers en mode sécurisé
+    df_sportaza  = safe_scrape(scrape_sportaza, SPORTS_SPORTAZA)
+    df_betify    = safe_scrape(scrape_betify,   SPORTS_BETIFY)
+    df_greenluck = safe_scrape(scrape_greenluck,SPORTS_GREENLUCK)
 
     # 2️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck], ignore_index=True)
@@ -56,10 +67,7 @@ def main():
     # 4️⃣ Envoyer les alertes
     if new_comp:
         for comp in new_comp:
-            # Filtrer toutes les lignes pour cette compétition
             df_comp = df_all[df_all["Competition"] == comp]
-
-            # Regrouper par bookmaker
             for bookmaker in df_comp["Bookmaker"].unique():
                 df_book = df_comp[df_comp["Bookmaker"] == bookmaker]
 
