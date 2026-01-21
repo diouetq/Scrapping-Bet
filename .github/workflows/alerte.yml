@@ -21,7 +21,7 @@ jobs:
 
       # --- 1️⃣ Télécharger le data.json du dernier run ---
       - name: Télécharger artifact précédent
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: data-json
           path: .
@@ -36,7 +36,7 @@ jobs:
 
       # --- 3️⃣ Uploader le data.json mis à jour ---
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: data-json
           path: data.json
