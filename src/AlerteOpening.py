@@ -12,7 +12,7 @@ import requests
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 BASE_DIR = Path(__file__).resolve().parent
-DATA_FILE = BASE_DIR.parent / "data.json"  # GitHub Actions va le mettre ici
+DATA_FILE = BASE_DIR.parent / "data.json"
 
 # Sports par défaut par bookmaker
 SPORTS_SPORTAZA  = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
@@ -37,12 +37,13 @@ def send_telegram_message(msg):
         return
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     try:
-        requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+        response = requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+        print(f"✅ Message Telegram envoyé : {response.status_code}")
     except Exception as e:
         print(f"⚠️ Erreur Telegram : {e}")
 
 def safe_scrape(scrape_func, sports):
-    """Appel sécurisé d’un scraper, retourne toujours un DataFrame"""
+    """Appel sécurisé d'un scraper, retourne toujours un DataFrame"""
     try:
         df = scrape_func(sports)
         if df is None or df.empty:
@@ -54,25 +55,37 @@ def safe_scrape(scrape_func, sports):
 
 # --- MAIN --- #
 def main():
+    print("🚀 Début du script d'alerte...")
+    
     # 1️⃣ Charger les anciennes compétitions
     old_data = load_data()
-    old_comp = old_data.get("competitions", [])  # liste des "Bookmaker | Competition" du dernier run
+    old_comp = set(old_data.get("competitions", []))  # ✅ Utiliser un SET pour comparaison rapide
+    print(f"📂 Anciennes compétitions ({len(old_comp)}) : {old_comp}")
 
     # 2️⃣ Scraper tous les bookmakers en mode sécurisé
+    print("🔍 Scraping en cours...")
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
     # 3️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck], ignore_index=True)
+    print(f"📊 Total de lignes scrapées : {len(df_all)}")
 
-    # 4️⃣ Créer liste de "Bookmaker | Competition" **exacte**, pour suivre toutes les combinaisons
-    current_comp = [f"{row['Bookmaker']} | {row['Competition']}" for _, row in df_all.iterrows()]
-    # supprime uniquement les doublons exacts dans le même bookmaker
-    current_comp = list(dict.fromkeys(current_comp))
+    # 4️⃣ ✅ CORRECTION : Créer un SET unique de "Bookmaker | Competition"
+    if df_all.empty:
+        current_comp = set()
+    else:
+        current_comp = set(
+            f"{row['Bookmaker']} | {row['Competition']}" 
+            for _, row in df_all.iterrows()
+        )
+    
+    print(f"🎯 Compétitions actuelles ({len(current_comp)}) : {current_comp}")
 
     # 5️⃣ Identifier les **nouvelles combinaisons** depuis le dernier run
-    new_comp = [c for c in current_comp if c not in old_comp]
+    new_comp = current_comp - old_comp  # ✅ Différence entre sets
+    print(f"🆕 Nouvelles compétitions ({len(new_comp)}) : {new_comp}")
 
     # 6️⃣ Envoyer les alertes pour chaque nouvelle combinaison
     if new_comp:
@@ -92,15 +105,19 @@ def main():
                 f"⏰ Cutoff : {cutoff_str}\n"
                 f"📊 Nombre de cotes : {nb_cotes}"
             )
+            print(f"📤 Envoi d'alerte : {comp}")
             send_telegram_message(msg)
+        
+        print(f"✅ {len(new_comp)} nouvelle(s) compétition(s) détectée(s) et alertée(s).")
     else:
-        # Si rien de nouveau, envoi juste un test pour vérifier le bot
-        send_telegram_message("ℹ️ Test : aucune nouvelle compétition détectée pour le moment.")
+        print("ℹ️ Aucune nouvelle compétition détectée.")
+        # ❌ Ne pas envoyer de message "test" à chaque fois
+        # send_telegram_message("ℹ️ Test : aucune nouvelle compétition détectée pour le moment.")
 
     # 7️⃣ Sauvegarder **toutes les combinaisons actuelles** dans data.json
-    save_data({"competitions": current_comp})
-    print(f"{len(new_comp)} nouvelles compétitions détectées.")
+    save_data({"competitions": sorted(list(current_comp))})  # ✅ Trier pour plus de clarté
+    print(f"💾 Sauvegarde de {len(current_comp)} compétitions dans data.json")
+    print("✅ Script terminé.")
 
 if __name__ == "__main__":
     main()
-
