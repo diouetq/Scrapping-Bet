@@ -11,12 +11,13 @@ import requests
 # --- CONFIGURATION --- #
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
-DATA_FILE = Path(os.environ.get("DATA_FILE", "data.json"))  # peut être passé depuis workflow
+BASE_DIR = Path(__file__).resolve().parent
+DATA_FILE = BASE_DIR.parent / "data.json"  # GitHub Actions va le mettre ici
 
 # Sports par défaut par bookmaker
-SPORTS_SPORTAZA = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
-SPORTS_BETIFY   = ["17","22","43","44","45","46","48"]
-SPORTS_GREENLUCK= ["14","15","16","17","27","28","31","32"]
+SPORTS_SPORTAZA  = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
+SPORTS_BETIFY    = ["17","22","43","44","45","46","48"]
+SPORTS_GREENLUCK = ["14","15","16","17","27","28","31","32"]
 
 # --- HELPERS --- #
 def load_data():
@@ -30,10 +31,18 @@ def save_data(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def send_telegram_message(msg):
-    requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-                  data={"chat_id": CHAT_ID, "text": msg})
+    """Envoie un message sur Telegram"""
+    if not TOKEN or not CHAT_ID:
+        print("⚠️ TELEGRAM_TOKEN ou CHAT_ID non défini !")
+        return
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    try:
+        requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+    except Exception as e:
+        print(f"⚠️ Erreur Telegram : {e}")
 
 def safe_scrape(scrape_func, sports):
+    """Appel sécurisé d’un scraper, retourne toujours un DataFrame"""
     try:
         df = scrape_func(sports)
         if df is None or df.empty:
@@ -48,22 +57,31 @@ def main():
     old_data = load_data()
     old_comp = old_data.get("competitions", [])
 
-    df_sportaza  = safe_scrape(scrape_sportaza, SPORTS_SPORTAZA)
-    df_betify    = safe_scrape(scrape_betify,   SPORTS_BETIFY)
-    df_greenluck = safe_scrape(scrape_greenluck,SPORTS_GREENLUCK)
+    # 1️⃣ Scraper tous les bookmakers
+    df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
+    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
+    df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
+    # 2️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck], ignore_index=True)
+
+    # Liste des compétitions actuelles
     current_comp = df_all["Competition"].dropna().unique().tolist()
+
+    # 3️⃣ Identifier les nouvelles compétitions
     new_comp = [c for c in current_comp if c not in old_comp]
 
+    # 4️⃣ Envoyer les alertes
     if new_comp:
         for comp in new_comp:
             df_comp = df_all[df_all["Competition"] == comp]
             for bookmaker in df_comp["Bookmaker"].unique():
                 df_book = df_comp[df_comp["Bookmaker"] == bookmaker]
+
                 cutoff_list = df_book["Cutoff"].dropna().unique()
                 cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
                 nb_cotes = len(df_book)
+
                 msg = (
                     f"⚡ Nouvelle compétition détectée !\n"
                     f"🎰 Bookmaker : {bookmaker}\n"
@@ -73,8 +91,10 @@ def main():
                 )
                 send_telegram_message(msg)
     else:
+        # Envoi pour test si aucune nouvelle compétition
         send_telegram_message("ℹ️ Test : aucune nouvelle compétition détectée pour le moment.")
 
+    # 5️⃣ Sauvegarder les compétitions actuelles dans data.json
     save_data({"competitions": current_comp})
     print(f"{len(new_comp)} nouvelles compétitions détectées.")
 

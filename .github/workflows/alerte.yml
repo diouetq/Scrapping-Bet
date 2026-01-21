@@ -3,40 +3,39 @@ name: AlerteOpening_Workflows
 on:
   schedule:
     - cron: '*/5 * * * *'  # toutes les 5 minutes
-  workflow_dispatch:
+  workflow_dispatch:      # permet de lancer manuellement
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Récupérer le repo
       - uses: actions/checkout@v3
 
+      # 2️⃣ Installer Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
+      # 3️⃣ Installer les dépendances
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
 
-      # --- 1️⃣ Télécharger le data.json du dernier run ---
-      - name: Télécharger artifact précédent
-        uses: actions/download-artifact@v4
-        with:
-          name: data-json
-          path: .
-
-      # --- 2️⃣ Lancer le script ---
+      # 4️⃣ Exécuter le script d'alerte
       - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          DATA_FILE: data.json
         run: python src/AlerteOpening.py
 
-      # --- 3️⃣ Uploader le data.json mis à jour ---
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: data-json
-          path: data.json
+      # 5️⃣ Commit et push de data.json mis à jour
+      - name: Commit et push data.json
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data.json
+          git commit -m "Mise à jour automatique de data.json [GitHub Actions]" || echo "Rien à commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
