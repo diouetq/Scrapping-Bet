@@ -49,7 +49,7 @@ def safe_scrape(scrape_func, sports):
             print("⚠️ Scraper a renvoyé None")
             return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
         
-        print("🔹 Contenu brut :", response[:500])  # juste les 500 premiers caractères pour debug
+        print("🔹 Contenu brut :", response[:5000])  # juste les 500 premiers caractères pour debug
         df = pd.DataFrame(response)  # ou ce que ton scraper fait
         if df.empty:
             return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
@@ -71,8 +71,8 @@ def main():
 
     # 2️⃣ Scraper tous les bookmakers en mode sécurisé
     print("🔍 Scraping en cours...")
-    df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
+    df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
     # 3️⃣ Fusionner tous les résultats
