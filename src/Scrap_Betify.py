@@ -31,7 +31,10 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
     # ============================
     url_0 = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/0"
     try:
-        resp = requests.get(url_0, headers=HEADERS, timeout=10)
+        resp = requests.get(url_0, headers=HEADERS, timeout=15)
+        if resp.status_code == 503:
+            print("❌ Erreur 503 : Le serveur bloque probablement l'IP de GitHub.")
+            # Optionnel : print(resp.text[:500]) pour voir le corps de l'erreur
         resp.raise_for_status()
         data_0 = resp.json()
     except Exception as e:
