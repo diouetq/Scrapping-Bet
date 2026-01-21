@@ -8,6 +8,10 @@ on:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    
+    # ✅ AJOUTER CES PERMISSIONS
+    permissions:
+      contents: write  # Permet d'écrire dans le repo
 
     steps:
       # 1️⃣ Récupérer le repo
