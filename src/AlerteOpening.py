@@ -43,15 +43,15 @@ def send_telegram_message(msg):
         print(f"⚠️ Erreur Telegram : {e}")
 
 def safe_scrape(scrape_func, sports):
-    """
-    Appel sécurisé d’un scraper.
-    - Passe toujours 'Id_sport=sports' aux scrapers.
-    - Retourne toujours un DataFrame même en cas d'erreur ou si vide.
-    """
     try:
-        df = scrape_func(Id_sport=sports)
-
-        if df is None or df.empty:
+        response = scrape_func(Id_sport=sports)
+        if response is None:
+            print("⚠️ Scraper a renvoyé None")
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+        
+        print("🔹 Contenu brut :", response[:500])  # juste les 500 premiers caractères pour debug
+        df = pd.DataFrame(response)  # ou ce que ton scraper fait
+        if df.empty:
             return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
         return df
 
