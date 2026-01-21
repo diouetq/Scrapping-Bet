@@ -2,7 +2,7 @@ name: AlerteOpening_Workflows
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # toutes les 5 minutes
+    - cron: '*/3 * * * *'  # toutes les 5 minutes
   workflow_dispatch:      # permet de lancer manuellement
 
 jobs:
