@@ -16,7 +16,7 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
     rows = []
 
     if Id_sport is None:
-        Id_sport = ['17','43', '44', '46']
+        Id_sport = ["17","43", "44", "46"]
 
     # ============================
     # 1️⃣ Charger /0
