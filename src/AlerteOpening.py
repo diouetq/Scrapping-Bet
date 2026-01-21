@@ -43,16 +43,23 @@ def send_telegram_message(msg):
         print(f"⚠️ Erreur Telegram : {e}")
 
 def safe_scrape(scrape_func, sports):
-    """Appel sécurisé d'un scraper, retourne toujours un DataFrame"""
+    """
+    Appel sécurisé d’un scraper.
+    - Passe toujours 'Id_sport=sports' aux scrapers.
+    - Retourne toujours un DataFrame même en cas d'erreur ou si vide.
+    """
     try:
-        df = scrape_func(sports)
+        df = scrape_func(Id_sport=sports)
+
         if df is None or df.empty:
             return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
         return df
+
     except Exception as e:
         print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
         return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
-
+    
+    
 # --- MAIN --- #
 def main():
     print("🚀 Début du script d'alerte...")
