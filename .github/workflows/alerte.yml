@@ -3,24 +3,35 @@ name: AlerteOpening_Workflows
 on:
   schedule:
     - cron: '*/5 * * * *'  # toutes les 5 minutes
-  workflow_dispatch:      # permet de lancer manuellement
+  workflow_dispatch:        # permet de lancer manuellement
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Récupérer le code depuis le repo
       - uses: actions/checkout@v3
 
+      # 2️⃣ Configurer Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
+      # 3️⃣ Installer les dépendances
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
 
-      - name: Lancer le script d'alerte
+      # 4️⃣ Lancer le script d’alerte
+      - name: Lancer le script d'alerte et push data.json
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python src/AlerteOpening.py
+          GH_PAT: ${{ secrets.GH_PAT }}       # token GitHub pour push automatique
+        run: |
+          # Configurer Git pour push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Lancer le script
+          python src/AlerteOpening.py
