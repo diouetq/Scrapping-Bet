@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 import pandas as pd
 from Scrap_Sportaza import scrape_sportaza
-from betify import scrape_betify
-from greenluck import scrape_greenluck
+from Scrap_Betify import scrape_betify
+from Scrap_Greenluck import scrape_greenluck
 import requests
 
 # --- CONFIGURATION --- #
