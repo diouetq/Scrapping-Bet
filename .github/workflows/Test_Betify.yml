@@ -1,0 +1,36 @@
+name: Test Betify Scraper
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test_scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas requests pytz
+
+    - name: Run Betify Scraper
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: |
+        python -c "
+import sys
+sys.path.append('.')
+from Scrap_Betify import scrape_betify
+df = scrape_betify(['17','22','43'])
+print(f'✅ Betify scrap ok, lignes récupérées: {len(df)}')
+"
