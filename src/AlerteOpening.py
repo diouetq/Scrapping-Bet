@@ -54,29 +54,33 @@ def safe_scrape(scrape_func, sports):
 
 # --- MAIN --- #
 def main():
+    # 1️⃣ Charger les anciennes compétitions
     old_data = load_data()
-    old_comp = old_data.get("competitions", [])
+    old_comp = old_data.get("competitions", [])  # liste des "Bookmaker | Competition" du dernier run
 
-    # 1️⃣ Scraper tous les bookmakers
+    # 2️⃣ Scraper tous les bookmakers en mode sécurisé
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
-    # 2️⃣ Fusionner tous les résultats
+    # 3️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck], ignore_index=True)
 
-    # 3️⃣ Créer liste de "Bookmaker | Competition" sans set, pour garder toutes les combinaisons
+    # 4️⃣ Créer liste de "Bookmaker | Competition" **exacte**, pour suivre toutes les combinaisons
     current_comp = [f"{row['Bookmaker']} | {row['Competition']}" for _, row in df_all.iterrows()]
-    current_comp = list(dict.fromkeys(current_comp))  # supprime uniquement les doublons exacts dans le même bookmaker
-    # 4️⃣ Identifier les nouvelles compétitions
+    # supprime uniquement les doublons exacts dans le même bookmaker
+    current_comp = list(dict.fromkeys(current_comp))
+
+    # 5️⃣ Identifier les **nouvelles combinaisons** depuis le dernier run
     new_comp = [c for c in current_comp if c not in old_comp]
 
-    # 5️⃣ Envoyer les alertes
+    # 6️⃣ Envoyer les alertes pour chaque nouvelle combinaison
     if new_comp:
         for comp in new_comp:
             bookmaker, competition = comp.split(" | ", 1)
             df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
 
+            # récupérer la date de cutoff et le nombre de cotes
             cutoff_list = df_comp["Cutoff"].dropna().unique()
             cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
             nb_cotes = len(df_comp)
@@ -90,12 +94,13 @@ def main():
             )
             send_telegram_message(msg)
     else:
-        # Envoi pour test si aucune nouvelle compétition
+        # Si rien de nouveau, envoi juste un test pour vérifier le bot
         send_telegram_message("ℹ️ Test : aucune nouvelle compétition détectée pour le moment.")
 
-    # 6️⃣ Sauvegarder les compétitions actuelles dans data.json
+    # 7️⃣ Sauvegarder **toutes les combinaisons actuelles** dans data.json
     save_data({"competitions": current_comp})
     print(f"{len(new_comp)} nouvelles compétitions détectées.")
 
 if __name__ == "__main__":
     main()
+
