@@ -65,36 +65,35 @@ def main():
     # 2️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck], ignore_index=True)
 
-    # Liste des compétitions actuelles
-    current_comp = df_all["Competition"].dropna().unique().tolist()
-
-    # 3️⃣ Identifier les nouvelles compétitions
+    # 3️⃣ Créer liste de "Bookmaker | Competition" sans set, pour garder toutes les combinaisons
+    current_comp = [f"{row['Bookmaker']} | {row['Competition']}" for _, row in df_all.iterrows()]
+    current_comp = list(dict.fromkeys(current_comp))  # supprime uniquement les doublons exacts dans le même bookmaker
+    # 4️⃣ Identifier les nouvelles compétitions
     new_comp = [c for c in current_comp if c not in old_comp]
 
-    # 4️⃣ Envoyer les alertes
+    # 5️⃣ Envoyer les alertes
     if new_comp:
         for comp in new_comp:
-            df_comp = df_all[df_all["Competition"] == comp]
-            for bookmaker in df_comp["Bookmaker"].unique():
-                df_book = df_comp[df_comp["Bookmaker"] == bookmaker]
+            bookmaker, competition = comp.split(" | ", 1)
+            df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
 
-                cutoff_list = df_book["Cutoff"].dropna().unique()
-                cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
-                nb_cotes = len(df_book)
+            cutoff_list = df_comp["Cutoff"].dropna().unique()
+            cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
+            nb_cotes = len(df_comp)
 
-                msg = (
-                    f"⚡ Nouvelle compétition détectée !\n"
-                    f"🎰 Bookmaker : {bookmaker}\n"
-                    f"🏆 Compétition : {comp}\n"
-                    f"⏰ Cutoff : {cutoff_str}\n"
-                    f"📊 Nombre de cotes : {nb_cotes}"
-                )
-                send_telegram_message(msg)
+            msg = (
+                f"⚡ Nouvelle compétition détectée !\n"
+                f"🎰 Bookmaker : {bookmaker}\n"
+                f"🏆 Compétition : {competition}\n"
+                f"⏰ Cutoff : {cutoff_str}\n"
+                f"📊 Nombre de cotes : {nb_cotes}"
+            )
+            send_telegram_message(msg)
     else:
         # Envoi pour test si aucune nouvelle compétition
         send_telegram_message("ℹ️ Test : aucune nouvelle compétition détectée pour le moment.")
 
-    # 5️⃣ Sauvegarder les compétitions actuelles dans data.json
+    # 6️⃣ Sauvegarder les compétitions actuelles dans data.json
     save_data({"competitions": current_comp})
     print(f"{len(new_comp)} nouvelles compétitions détectées.")
 
