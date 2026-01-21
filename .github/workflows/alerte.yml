@@ -2,8 +2,8 @@ name: AlerteOpening_Workflows
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # toutes les 5 minutes
-  workflow_dispatch:      # permet de lancer manuellement
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -13,51 +13,23 @@ jobs:
       contents: write
 
     steps:
-      # 1️⃣ Récupérer le repo avec tout l'historique
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Important pour avoir l'historique complet
 
-      # 2️⃣ Installer Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer les dépendances
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
 
-      # 4️⃣ Afficher le contenu actuel de data.json AVANT exécution
-      - name: Afficher data.json AVANT
-        run: |
-          echo "📂 Contenu de data.json AVANT exécution :"
-          cat data.json || echo "⚠️ data.json n'existe pas encore"
-
-      # 5️⃣ Exécuter le script d'alerte
       - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python src/AlerteOpening.py
 
-      # 6️⃣ Afficher le contenu de data.json APRÈS exécution
-      - name: Afficher data.json APRÈS
-        run: |
-          echo "📂 Contenu de data.json APRÈS exécution :"
-          cat data.json
-
-      # 7️⃣ Vérifier si data.json a changé
-      - name: Vérifier les changements
-        run: |
-          git diff data.json
-          if git diff --quiet data.json; then
-            echo "ℹ️ data.json n'a pas changé"
-          else
-            echo "✅ data.json a été modifié"
-          fi
-
-      # 8️⃣ Commit et push de data.json (même s'il n'a pas changé, pour déboguer)
-      - name: Commit et push data.json
+      # ✅ TOUJOURS COMMIT ET PUSH
+      - name: Commit et push data.json (forcé)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -65,12 +37,10 @@ jobs:
           # Ajouter data.json
           git add data.json
           
-          # Vérifier s'il y a quelque chose à commiter
-          if git diff --staged --quiet; then
-            echo "ℹ️ Aucun changement à commiter"
-          else
-            echo "✅ Commit des changements..."
-            git commit -m "🤖 Mise à jour automatique de data.json [$(date -u '+%Y-%m-%d %H:%M:%S UTC')]"
-            git push
-            echo "✅ Push réussi !"
-          fi
+          # Toujours commiter (même sans changement)
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
+          
+          # Push
+          git push
+          echo "✅ Push réussi à $TIMESTAMP"
