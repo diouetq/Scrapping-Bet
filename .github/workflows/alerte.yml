@@ -2,15 +2,15 @@ name: AlerteOpening_Workflows
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # toutes les 5 minutes
-  workflow_dispatch:
+    - cron: '*/5 * * * *'  # S'exécute toutes les 5 minutes
+  workflow_dispatch:      # Permet de lancer le script manuellement
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout
+      # 1️⃣ Checkout du repo pour accéder aux scripts et à data.json
       - uses: actions/checkout@v4
 
       # 2️⃣ Installer Python
@@ -18,37 +18,28 @@ jobs:
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer dépendances Python
+      # 3️⃣ Installer les dépendances (requests, pandas, etc.)
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas openpyxl pytz python-telegram-bot==20.4
+          pip install -r requirements.txt
 
-      # 4️⃣ Installer tinyproxy (HTTP)
-      - name: Installer et lancer tinyproxy
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tinyproxy
-          sudo sed -i 's/^Port .*/Port 1080/' /etc/tinyproxy/tinyproxy.conf
-          sudo sed -i 's/^#Allow 127.0.0.1/Allow 127.0.0.1/' /etc/tinyproxy/tinyproxy.conf
-          sudo sed -i 's/^#DisableViaHeader Yes/DisableViaHeader Yes/' /etc/tinyproxy/tinyproxy.conf
-          sudo tinyproxy -d &
-
-      # 5️⃣ Lancer le script d'alerte
+      # 4️⃣ Lancer le script d'alerte
+      # On ne configure plus PROXY_HOST ici car il est géré dans le script Python
       - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          PROXY_HOST: 127.0.0.1
-          PROXY_PORT: 1080
         run: python src/AlerteOpening.py
 
-      # 6️⃣ Commit et push data.json
+      # 5️⃣ Sauvegarder les modifications de data.json sur GitHub
       - name: Commit et push data.json
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
           git add data.json
+
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
-          git push
+          # Commit seulement s'il y a des changements pour éviter les erreurs
+          git diff --staged --quiet || (git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]" && git push)
