@@ -2,44 +2,45 @@ name: AlerteOpening_Workflows
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # S'exécute toutes les 5 minutes
-  workflow_dispatch:      # Permet de lancer le script manuellement
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
 
     steps:
-      # 1️⃣ Checkout du repo pour accéder aux scripts et à data.json
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      # 2️⃣ Installer Python
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer les dépendances (requests, pandas, etc.)
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      - run: pip install --upgrade pip
+      - run: pip install -r requirements.txt
 
-      # 4️⃣ Lancer le script d'alerte
-      # On ne configure plus PROXY_HOST ici car il est géré dans le script Python
       - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python src/AlerteOpening.py
 
-      # 5️⃣ Sauvegarder les modifications de data.json sur GitHub
-      - name: Commit et push data.json
+      # ✅ TOUJOURS COMMIT ET PUSH
+      - name: Commit et push data.json (forcé)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
+          
+          # Ajouter data.json
           git add data.json
-
+          
+          # Toujours commiter (même sans changement)
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          # Commit seulement s'il y a des changements pour éviter les erreurs
-          git diff --staged --quiet || (git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]" && git push)
+          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
+          
+          # Push
+          git push
+          echo "✅ Push réussi à $TIMESTAMP"
