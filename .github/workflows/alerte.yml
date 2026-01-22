@@ -1,51 +1,60 @@
+# .github/workflows/alerte_opening.yml
 name: AlerteOpening_Workflows
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *'   # toutes les 5 minutes
   workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
-      # 1️⃣ Checkout
+      # 1️⃣ Récupération du code
       - uses: actions/checkout@v4
 
-      # 2️⃣ Setup Python
+      # 2️⃣ Installer Python
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer dependencies Python
+      # 3️⃣ Installer dépendances Python
       - name: Install Python dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4️⃣ Installer tinyproxy et iptables
+      # 4️⃣ Installer tinyproxy pour le proxy local
       - name: Setup tinyproxy
         run: |
           sudo apt-get update
-          sudo apt-get install -y tinyproxy iptables
-          
-          # Configurer tinyproxy pour écouter sur 127.0.0.1:8888
-          sudo sed -i 's/^Port.*/Port 8888/' /etc/tinyproxy/tinyproxy.conf
-          sudo sed -i 's/^#Allow 127.0.0.1/Allow 127.0.0.1/' /etc/tinyproxy/tinyproxy.conf
-          sudo systemctl restart tinyproxy
-          
-          # Vérifier que tinyproxy écoute
-          sudo netstat -tlnp | grep 8888
+          sudo apt-get install -y tinyproxy
+          # Configurer tinyproxy pour écouter sur localhost:8888
+          sudo sed -i 's/^Port .*/Port 8888/' /etc/tinyproxy/tinyproxy.conf
+          sudo sed -i 's/^Allow .*/Allow 127.0.0.1/' /etc/tinyproxy/tinyproxy.conf
+          sudo service tinyproxy start
+          # Vérifier le proxy
+          curl -x http://127.0.0.1:8888 http://httpbin.org/ip
 
-      # 5️⃣ Configurer iptables pour rediriger le trafic HTTP/HTTPS
-      - name: Setup iptables for proxy
+      # 5️⃣ Configurer iptables pour rediriger Betify via le proxy
+      # Ici, tous les appels vers api-a-c7818b61-600.sptpub.com passent par le proxy
+      - name: Setup iptables redirect for Betify
         run: |
-          sudo iptables -t nat -A OUTPUT -p tcp --dport 80 -j REDIRECT --to-port 8888
-          sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -j REDIRECT --to-port 8888
+          sudo apt-get install -y iptables
+          # Extraire l'IP de l'API Betify
+          BETIFY_IP=$(dig +short api-a-c7818b61-600.sptpub.com | head -n1)
+          echo "API Betify IP: $BETIFY_IP"
+          # Rediriger le trafic TCP 443 vers le proxy local
+          sudo iptables -t nat -A OUTPUT -p tcp -d $BETIFY_IP --dport 443 -j REDIRECT --to-ports 8888
+          # Lister les règles pour vérification
+          sudo iptables -t nat -L -n -v
 
-      # 6️⃣ Lancer le script avec proxy local
-      - name: Run bot
+      # 6️⃣ Lancer le script d'alerte
+      - name: Run AlerteOpening.py
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -53,11 +62,12 @@ jobs:
           PROXY_PORT: 8888
         run: python src/AlerteOpening.py
 
-      # 7️⃣ Commit & push data.json
-      - name: Commit data.json
+      # 7️⃣ Commit et push du data.json
+      - name: Commit and push data.json
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet && git commit --allow-empty -m "auto run" || git commit -m "update data"
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
           git push

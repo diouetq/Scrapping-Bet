@@ -16,7 +16,7 @@ CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR.parent / "data.json"
 
-# Proxy local GitHub Actions
+# Proxy local GitHub Actions (pour Betify uniquement)
 PROXY_HOST = os.environ.get("PROXY_HOST", "127.0.0.1")
 PROXY_PORT = os.environ.get("PROXY_PORT", "8888")
 PROXIES = {
@@ -25,7 +25,7 @@ PROXIES = {
 }
 
 # Sports par défaut par bookmaker
-SPORTS_SPORTAZA  = ["1359","923","924","1380","1405","1406","904","1411","1412","672", "893"]
+SPORTS_SPORTAZA  = ["1359","923","924","1380","1405","1406","904","1411","1412","672","893"]
 SPORTS_BETIFY    = ["17","22","43","44","45","46","48"]
 SPORTS_GREENLUCK = ["14","15","16","17","27","28","31","32"]
 
@@ -47,15 +47,18 @@ def send_telegram_message(msg):
         return
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     try:
-        response = requests.post(url, data={"chat_id": CHAT_ID, "text": msg}, proxies=PROXIES)
+        response = requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
         print(f"✅ Message Telegram envoyé : {response.status_code}")
     except Exception as e:
         print(f"⚠️ Erreur Telegram : {e}")
 
-def safe_scrape(scrape_func, sports):
-    """Scrape en mode sécurisé avec proxy et fallback sur DataFrame vide"""
+def safe_scrape(scrape_func, sports, use_proxy=False):
+    """Scrape en mode sécurisé, option proxy pour Betify"""
     try:
-        df = scrape_func(Id_sport=sports, proxies=PROXIES)
+        if scrape_func.__name__ == "scrape_betify" and use_proxy:
+            df = scrape_func(Id_sport=sports, proxies=PROXIES)
+        else:
+            df = scrape_func(Id_sport=sports)
         if df is None or df.empty:
             return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
         return df
@@ -74,7 +77,7 @@ def main():
 
     # 2️⃣ Scraper tous les bookmakers
     print("🔍 Scraping en cours...")
-    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
+    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY, use_proxy=True)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
