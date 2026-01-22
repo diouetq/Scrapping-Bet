@@ -19,32 +19,17 @@ jobs:
         with:
           python-version: '3.11'
 
-      # ✅ INSTALLATION CHROME + CHROMEDRIVER
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-
-      - name: Install Chrome dependencies
+      # ✅ INSTALLATION CHROME (VERSION SIMPLIFIÉE)
+      - name: Setup Chrome and dependencies
         run: |
+          # Installer Chrome
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libnspr4 \
-            libgbm1 \
-            libasound2 \
-            fonts-liberation \
-            libappindicator3-1 \
-            xdg-utils \
-            wget \
-            unzip
-
-      # ✅ VÉRIFICATION INSTALLATION
-      - name: Verify Chrome installation
-        run: |
-          which google-chrome || which chromium-browser || which chrome
-          google-chrome --version || chromium-browser --version || chrome --version
-          echo "✅ Chrome installé"
+          sudo apt-get install -y google-chrome-stable
+          
+          # Vérifier l'installation
+          google-chrome --version
 
       - name: Install Python dependencies
         run: |
