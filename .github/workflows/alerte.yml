@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout du repo
+      # 1️⃣ Checkout
       - uses: actions/checkout@v4
 
       # 2️⃣ Installer Python
@@ -18,40 +18,23 @@ jobs:
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installer les dépendances
+      # 3️⃣ Installer dépendances Python
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install requests[socks]  # pour utiliser SOCKS5 avec requests
+          pip install requests pandas openpyxl pytz python-telegram-bot==20.4
 
-      # 4️⃣ Installer Dante (serveur SOCKS5)
-      - name: Installer Dante SOCKS5
+      # 4️⃣ Installer tinyproxy (HTTP)
+      - name: Installer et lancer tinyproxy
         run: |
           sudo apt-get update
-          sudo apt-get install -y dante-server
-          # Config minimale Dante SOCKS5 sur localhost:1080 sans auth
-          echo "
-          logoutput: stderr
-          internal: 0.0.0.0 port = 1080
-          external: 0.0.0.0
-          method: none
-          user.privileged: root
-          user.notprivileged: nobody
-          client pass {
-              from: 0.0.0.0/0 to: 0.0.0.0/0
-              log: connect error
-          }
-          pass {
-              from: 0.0.0.0/0 to: 0.0.0.0/0
-              protocol: tcp udp
-              log: connect error
-          }" | sudo tee /etc/danted.conf
+          sudo apt-get install -y tinyproxy
+          sudo sed -i 's/^Port .*/Port 1080/' /etc/tinyproxy/tinyproxy.conf
+          sudo sed -i 's/^#Allow 127.0.0.1/Allow 127.0.0.1/' /etc/tinyproxy/tinyproxy.conf
+          sudo sed -i 's/^#DisableViaHeader Yes/DisableViaHeader Yes/' /etc/tinyproxy/tinyproxy.conf
+          sudo tinyproxy -d &
 
-          # Lancer Dante en arrière-plan
-          sudo danted -f /etc/danted.conf &
-
-      # 5️⃣ Lancer le script d'alerte avec proxy SOCKS5 pour Betify
+      # 5️⃣ Lancer le script d'alerte
       - name: Lancer le script d'alerte
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -65,10 +48,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
           git add data.json
-
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
           git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
-
           git push
