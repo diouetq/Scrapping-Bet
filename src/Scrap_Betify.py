@@ -1,16 +1,9 @@
-# -*- coding: utf-8 -*-
 import requests
 import pandas as pd
 from datetime import datetime
 import pytz
 
 def scrape_betify(Id_sport=None, proxies=None) -> pd.DataFrame:
-    """
-    Scrape Betify (CrazyBet infra)
-    Arguments:
-        Id_sport : liste d'ID de sports à scraper
-        proxies  : dictionnaire de proxies compatible requests (ex: {"http": "...", "https": "..."})
-    """
     BRAND = "2491953325260546049"
     paris_tz = pytz.timezone("Europe/Paris")
     extraction_dt = datetime.now(paris_tz)
@@ -21,7 +14,10 @@ def scrape_betify(Id_sport=None, proxies=None) -> pd.DataFrame:
 
     session = requests.Session()
     if proxies:
+        # SOCKS5 proxy
         session.proxies.update(proxies)
+
+    # ... reste du code inchangé ...
 
     # ============================
     # 1️⃣ Charger /0
