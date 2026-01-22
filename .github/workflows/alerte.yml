@@ -8,53 +8,56 @@ on:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
 
     steps:
-      - uses: actions/checkout@v3
+      # 1️⃣ Checkout
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      # 2️⃣ Setup Python
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # ✅ INSTALLATION CHROME (VERSION SIMPLIFIÉE)
-      - name: Setup Chrome and dependencies
-        run: |
-          # Installer Chrome
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-          
-          # Vérifier l'installation
-          google-chrome --version
-
+      # 3️⃣ Installer dependencies Python
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Lancer le script d'alerte
+      # 4️⃣ Installer tinyproxy et iptables
+      - name: Setup tinyproxy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tinyproxy iptables
+          
+          # Configurer tinyproxy pour écouter sur 127.0.0.1:8888
+          sudo sed -i 's/^Port.*/Port 8888/' /etc/tinyproxy/tinyproxy.conf
+          sudo sed -i 's/^#Allow 127.0.0.1/Allow 127.0.0.1/' /etc/tinyproxy/tinyproxy.conf
+          sudo systemctl restart tinyproxy
+          
+          # Vérifier que tinyproxy écoute
+          sudo netstat -tlnp | grep 8888
+
+      # 5️⃣ Configurer iptables pour rediriger le trafic HTTP/HTTPS
+      - name: Setup iptables for proxy
+        run: |
+          sudo iptables -t nat -A OUTPUT -p tcp --dport 80 -j REDIRECT --to-port 8888
+          sudo iptables -t nat -A OUTPUT -p tcp --dport 443 -j REDIRECT --to-port 8888
+
+      # 6️⃣ Lancer le script avec proxy local
+      - name: Run bot
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PROXY_HOST: 127.0.0.1
+          PROXY_PORT: 8888
         run: python src/AlerteOpening.py
 
-      # ✅ TOUJOURS COMMIT ET PUSH
-      - name: Commit et push data.json (forcé)
+      # 7️⃣ Commit & push data.json
+      - name: Commit data.json
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Ajouter data.json
           git add data.json
-          
-          # Toujours commiter (même sans changement)
-          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
-          
-          # Push
+          git diff --staged --quiet && git commit --allow-empty -m "auto run" || git commit -m "update data"
           git push
-          echo "✅ Push réussi à $TIMESTAMP"
