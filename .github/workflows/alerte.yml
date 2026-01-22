@@ -19,8 +19,37 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install --upgrade pip
-      - run: pip install -r requirements.txt
+      # ✅ INSTALLATION CHROME + CHROMEDRIVER
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install Chrome dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libnspr4 \
+            libgbm1 \
+            libasound2 \
+            fonts-liberation \
+            libappindicator3-1 \
+            xdg-utils \
+            wget \
+            unzip
+
+      # ✅ VÉRIFICATION INSTALLATION
+      - name: Verify Chrome installation
+        run: |
+          which google-chrome || which chromium-browser || which chrome
+          google-chrome --version || chromium-browser --version || chrome --version
+          echo "✅ Chrome installé"
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Lancer le script d'alerte
         env:
