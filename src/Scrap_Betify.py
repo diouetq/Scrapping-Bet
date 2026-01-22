@@ -6,6 +6,54 @@ from datetime import datetime
 import pytz
 import time
 
+
+
+
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+def get_browser_session():
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options
+    )
+
+    driver.get("https://betify.com/")
+    time.sleep(5)
+
+    cookies = driver.get_cookies()
+    user_agent = driver.execute_script("return navigator.userAgent;")
+    driver.quit()
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": user_agent,
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://betify.com/",
+        "Origin": "https://betify.com"
+    })
+
+    for c in cookies:
+        session.cookies.set(c['name'], c['value'])
+
+    return session
+
+
+
+SESSION = get_browser_session()
+
+
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
@@ -18,11 +66,11 @@ HEADERS = {
 
 def safe_get_json(url, label=""):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=20)
+        r = SESSION.get(url, timeout=25)
         print(f"🌐 {label} {r.status_code} → {url}")
 
         if r.status_code != 200:
-            print("⛔ Réponse non 200 (extrait):")
+            print("⛔ Réponse non 200 :")
             print(r.text[:400])
             return None
 

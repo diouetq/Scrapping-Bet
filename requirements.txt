@@ -3,3 +3,5 @@ pandas
 openpyxl
 python-telegram-bot==20.4
 pytz
+selenium
+webdriver-manager
