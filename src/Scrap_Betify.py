@@ -3,179 +3,100 @@ import pandas as pd
 from datetime import datetime
 import pytz
 
-# Configuration Tor Centralisée
+# Configuration Tor
 TOR_PROXIES = {
     'http': 'socks5h://127.0.0.1:9050',
     'https': 'socks5h://127.0.0.1:9050'
 }
 
-def scrape_betify(Id_sport=None) -> pd.DataFrame:
+def scrape_betify(Id_sport=None, use_tor=True) -> pd.DataFrame:
     BRAND = "2491953325260546049"
     paris_tz = pytz.timezone("Europe/Paris")
     extraction_dt = datetime.now(paris_tz)
     rows = []
 
+    # Choix du mode de connexion
+    proxies = TOR_PROXIES if use_tor else None
     if Id_sport is None:
         Id_sport = ['43', '44', '46']
 
-    # Headers réutilisables
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json, text/plain, */*",
         "Referer": "https://www.betify.com/"
     }
 
-    # ============================
-    # 1️⃣ Charger /0
-    # ============================
+    # --- 1️⃣ Charger /0 ---
     url_0 = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/0"
-    
-    # Utilisation du proxy Tor ici
     try:
-        response_0 = requests.get(url_0, headers=headers, proxies=TOR_PROXIES, timeout=30)
-        data_0 = response_0.json()
+        res = requests.get(url_0, headers=headers, proxies=proxies, timeout=30)
+        if res.status_code != 200:
+            return pd.DataFrame()
+        data_0 = res.json()
     except Exception as e:
-        print(f"🚨 Erreur lors du chargement de /0 via Tor: {e}")
+        print(f"❌ Betify Error /0: {e}")
         return pd.DataFrame()
 
     top_versions = data_0.get("top_events_versions", [])
     rest_versions = data_0.get("rest_events_versions", [])
-
     if len(top_versions) == 1 and isinstance(top_versions[0], list):
         top_versions = top_versions[0]
-
     all_versions = list(set(top_versions + rest_versions))
 
-    # ============================
-    # 2️⃣ Charger toutes les versions
-    # ============================
-    all_events = {}
-    all_tournaments = {}
-
+    # --- 2️⃣ Charger les versions ---
+    all_events, all_tournaments = {}, {}
     for ver in all_versions:
         url = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/{ver}"
         try:
-            # Proxy Tor ici aussi
-            data = requests.get(url, headers=headers, proxies=TOR_PROXIES, timeout=30).json()
-            all_events.update(data.get("events", {}))
-            all_tournaments.update(data.get("tournaments", {}))
-        except Exception:
-            continue
+            r = requests.get(url, headers=headers, proxies=proxies, timeout=20)
+            if r.status_code == 200:
+                d = r.json()
+                all_events.update(d.get("events", {}))
+                all_tournaments.update(d.get("tournaments", {}))
+        except: continue
 
-    events = all_events
-    tournaments = all_tournaments
-
-    # ============================
-    # 3️⃣ Marchés sans variant
-    # ============================
-    for event in events.values():
+    # --- 3️⃣ & 4️⃣ Traitement des marchés ---
+    for event_id, event in all_events.items():
         desc = event.get("desc", {})
-        if desc.get("sport") not in Id_sport:
-            continue
-
-        competitors = [c.get("name") for c in desc.get("competitors", [])]
-        markets = event.get("markets", {})
-        if not markets:
-            continue
-
-        market_id = min(markets.keys(), key=lambda x: int(x))
-        market = markets[market_id]
-
-        for variant_key, outcomes in market.items():
-            if "variant=" in variant_key:
-                continue
-            if len(outcomes) != 2:
-                continue
-
-            sorted_outcomes = sorted(outcomes.items(), key=lambda x: int(x[0]))
-            cutoff = datetime.fromtimestamp(desc["scheduled"], paris_tz) if desc.get("scheduled") else None
-
-            for idx, (_, odd) in enumerate(sorted_outcomes):
-                rows.append({
-                    "Bookmaker": "Betify",
-                    "Competition": tournaments.get(desc.get("tournament"), {}).get("name"),
-                    "Extraction": extraction_dt,
-                    "Cutoff": cutoff,
-                    "Evenement": desc.get("slug"),
-                    "Competiteur": competitors[idx] if idx < len(competitors) else None,
-                    "Cote": float(odd.get("k"))
-                })
-
-# =====================================================
-    # 4️⃣ Marchés avec variant (nouveau endpoint v3)
-    # =====================================================
-    for event_id, event in events.items():
-        desc = event.get("desc", {})
-        if desc.get("sport") not in Id_sport:
-            continue
-    
-        cutoff = datetime.fromtimestamp(desc.get("scheduled"), paris_tz) if desc.get("scheduled") else None
-    
+        if desc.get("sport") not in Id_sport: continue
+        
+        tournament_name = all_tournaments.get(desc.get("tournament"), {}).get("name")
+        cutoff = datetime.fromtimestamp(desc["scheduled"], paris_tz) if desc.get("scheduled") else None
+        
         for market_id, variants in event.get("markets", {}).items():
             for variant_key, outcomes in variants.items():
+                if len(outcomes) != 2: continue
+
+                # Cas standard (H2H)
                 if "variant=" not in variant_key:
-                    continue
-                if len(outcomes) != 2:
-                    continue
-    
-                # Récupération du variant_id (ex: tt:markettext:2623...)
-                variant_id = variant_key.split("variant=")[-1]
-    
-                # Endpoint v3 de description
-                api_url = (
-                    f"https://api-a-c7818b61-600.sptpub.com/api/v3/descriptions/brand/{BRAND}"
-                    f"/event/{event_id}/market/{market_id}@variant={variant_id}/fr"
-                )
-    
-                try:
-                    api_data = requests.get(api_url, headers=headers, proxies=TOR_PROXIES, timeout=30).json()
-                except Exception:
-                    continue
-    
-                # --- CORRECTION ICI ---
-                # L'API v3 renvoie directement un dictionnaire avec "markets" à la racine
-                markets_desc = api_data.get("markets", {})
+                    competitors = [c.get("name") for c in desc.get("competitors", [])]
+                    sorted_o = sorted(outcomes.items(), key=lambda x: int(x[0]))
+                    for idx, (_, odd) in enumerate(sorted_o):
+                        rows.append({
+                            "Bookmaker": "Betify", "Competition": tournament_name,
+                            "Extraction": extraction_dt, "Cutoff": cutoff,
+                            "Evenement": desc.get("slug"), "Cote": float(odd.get("k")),
+                            "Competiteur": competitors[idx] if idx < len(competitors) else None
+                        })
                 
-                # On accède au dictionnaire du marché spécifique (ex: "150011")
-                specific_market_desc = markets_desc.get(market_id, {})
-                
-                # On récupère la liste des données pour ce variant précis
-                variant_list = specific_market_desc.get("variants", {}).get(f"variant={variant_id}", [])
-                
-                if variant_list:
-                    variant_info = variant_list[0]  # On prend le premier (et seul) bloc
-                    event_name = variant_info.get("name", desc.get("slug"))
-                    outcomes_list = variant_info.get("outcomes", [])
+                # Cas avec Variant (Endpoint v3)
                 else:
-                    event_name = desc.get("slug")
-                    outcomes_list = []
-    
-                # Mapping id (ex: tt:outcometext:...) -> nom (ex: Slovenia)
-                id_to_name = {o["id"]: o["name"] for o in outcomes_list}
-    
-                # Remplissage des lignes avec les noms traduits
-                for oid, odd in outcomes.items():
-                    rows.append({
-                        "Bookmaker": "Betify",
-                        "Competition": tournaments.get(desc.get("tournament"), {}).get("name"),
-                        "Extraction": extraction_dt,
-                        "Cutoff": cutoff,
-                        "Evenement": event_name,           # Nom complet (ex: Ruhpolding Relay...)
-                        "Competiteur": id_to_name.get(oid, oid), # Nom (ex: Slovenia ou USA)
-                        "Cote": float(odd.get("k"))
-                    })
+                    v_id = variant_key.split("variant=")[-1]
+                    v3_url = f"https://api-a-c7818b61-600.sptpub.com/api/v3/descriptions/brand/{BRAND}/event/{event_id}/market/{market_id}@variant={v_id}/fr"
+                    try:
+                        v3_res = requests.get(v3_url, headers=headers, proxies=proxies, timeout=20)
+                        v3_data = v3_res.json()
+                        v_list = v3_data.get("markets", {}).get(market_id, {}).get("variants", {}).get(f"variant={v_id}", [])
+                        if v_list:
+                            v_info = v_list[0]
+                            id_map = {o["id"]: o["name"] for o in v_info.get("outcomes", [])}
+                            for oid, odd in outcomes.items():
+                                rows.append({
+                                    "Bookmaker": "Betify", "Competition": tournament_name,
+                                    "Extraction": extraction_dt, "Cutoff": cutoff,
+                                    "Evenement": v_info.get("name", desc.get("slug")),
+                                    "Competiteur": id_map.get(oid, oid), "Cote": float(odd.get("k"))
+                                })
+                    except: continue
 
-    # ============================
-    # 5️⃣ Création du DataFrame final
-    # ============================
-    df = pd.DataFrame(rows)
-
-    return df[[
-        "Bookmaker",
-        "Competition",
-        "Extraction",
-        "Cutoff",
-        "Evenement",
-        "Competiteur",
-        "Cote"
-    ]]
+    return pd.DataFrame(rows) if rows else pd.DataFrame()

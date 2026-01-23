@@ -69,7 +69,11 @@ def safe_scrape(scrape_func, sports):
         print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
         import traceback
         traceback.print_exc()
-        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+    
+    
+
+    
     
 # --- MAIN --- #
 def main():
@@ -82,7 +86,7 @@ def main():
 
     # 2️⃣ Scraper tous les bookmakers en mode sécurisé
     print("🔍 Scraping en cours...")
-    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
+    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY,use_tor=True)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
@@ -105,24 +109,51 @@ def main():
     new_comp = current_comp - old_comp  # ✅ Différence entre sets
     print(f"🆕 Nouvelles compétitions ({len(new_comp)}) : {new_comp}")
 
-    # 6️⃣ Envoyer les alertes pour chaque nouvelle combinaison
+# 6️⃣ Envoyer les alertes pour chaque nouvelle combinaison
     if new_comp:
-        for comp in new_comp:
-            bookmaker, competition = comp.split(" | ", 1)
-            df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
-    
-            # récupérer la date de cutoff (pas de "nb_cotes" car on n'a plus cette colonne)
-            cutoff_list = df_comp["Cutoff"].dropna().unique()
-            cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
-    
-            msg = (
-                f"⚡ Nouvelle compétition H2H détectée !\n"
-                f"🎰 Bookmaker : {bookmaker}\n"
-                f"🏆 Compétition : {competition}\n"
-                f"⏰ Cutoff : {cutoff_str}"
-            )
-            print(f"📤 Envoi d'alerte : {comp}")
-            send_telegram_message(msg)
+        for comp_key in new_comp:
+            try:
+                bookmaker, competition = comp_key.split(" | ", 1)
+                
+                # On filtre toutes les lignes de cette compétition précise
+                df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
+                
+                # --- CALCULS STATISTIQUES ---
+                # 1. Nombre de cotes (nombre total de lignes pour cette comp)
+                nb_cotes = len(df_comp)
+                
+                # 2. Calcul du TRJ moyen
+                # On regroupe par événement (match) pour calculer le TRJ de chaque match
+                # On part du principe qu'il y a 2 compétiteurs par événement
+                trj_list = []
+                for event, group in df_comp.groupby("Evenement"):
+                    if len(group) == 2:
+                        cotes = group["Cote"].values
+                        trj = (1 / ((1/cotes[0]) + (1/cotes[1]))) * 100
+                        trj_list.append(trj)
+                
+                avg_trj = sum(trj_list) / len(trj_list) if trj_list else 0
+                # ----------------------------
+
+                # Récupération de la date de cutoff
+                cutoff_list = df_comp["Cutoff"].dropna().unique()
+                cutoff_str = pd.to_datetime(cutoff_list[0]).strftime("%d/%m %H:%M") if len(cutoff_list) > 0 else "N/A"
+
+                msg = (
+                    f"⚡ Nouvelle compétition H2H détectée !\n"
+                    f"🎰 Bookmaker : {bookmaker}\n"
+                    f"🏆 Compétition : {competition}\n"
+                    f"⏰ Cutoff : {cutoff_str}"
+                    f"📊 Nombre de cotes : {nb_cotes}\n"
+                    f"💰 TRJ Moyen : {avg_trj:.2f}%\n"
+ 
+                )
+                
+                print(f"📤 Envoi d'alerte : {comp_key} ({nb_cotes} cotes, {avg_trj:.2f}% TRJ)")
+                send_telegram_message(msg)
+                
+            except Exception as e:
+                print(f"⚠️ Erreur lors du calcul des stats pour {comp_key} : {e}")
         
         print(f"✅ {len(new_comp)} nouvelle(s) compétition(s) détectée(s) et alertée(s).")
     else:
