@@ -86,7 +86,7 @@ def main():
 
     # 2️⃣ Scraper tous les bookmakers en mode sécurisé
     print("🔍 Scraping en cours...")
-    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY,use_tor=True)
+    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
