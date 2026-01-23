@@ -1,69 +1,37 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec 27 19:10:34 2025
+import requests
 
-@author: dioue
-"""
+def fetch_betify_events_minimal(BRAND="2491953325260546049", sports_target=None, lang="en"):
+    if sports_target is None:
+        sports_target = ["17","22","43", "44","45", "46", "48"]  # tes sports
 
-from Excel_builder import build_excel
+    # 1) On récupère juste la dernière version (snapshot = 0)
+    url = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/{lang}/0"
+    resp = requests.get(url)
+    if resp.status_code != 200:
+        return []
 
-from Scrap_Sportaza import scrape_sportaza
-from Scrap_Greenluck import scrape_greenluck
-from Scrap_Betify import scrape_betify
+    data = resp.json()
+    events = data.get("events", {})
+    categories = data.get("categories", {})
 
+    filtered_events = []
 
-# =========================
-# 🔽 DEF RUN : choisir les sports
-# =========================
+    for event_id, event_data in events.items():
+        desc = event_data.get("desc", {})
+        sport_id = str(desc.get("sport"))
+        if sport_id not in sports_target:
+            continue
 
+        # On récupère juste les infos essentielles
+        category_id = desc.get("category")
+        competition_name = categories.get(str(category_id), {}).get("name", "")
 
-def run_sportaza():
-    return scrape_sportaza(
-        Id_sport=["1359","1393", "904", "923", "924", "1405", "1406", "1356", "1659", "893"]
-    )
+        filtered_events.append({
+            "event_id": event_id,
+            "sport_id": sport_id,
+            "slug": desc.get("slug"),
+            "scheduled": desc.get("scheduled"),
+            "competition": competition_name
+        })
 
-
-def run_greenluck():
-    return scrape_greenluck(
-        Id_sport=["14", "15", "16", "17", "27","28","31", "32"]
-    )
-
-
-def run_betify():
-    return scrape_betify(
-        Id_sport=["17","22","43", "44","45", "46", "48"]
-    )
-
-
-# =========================
-# 🔽 CHOIX DU BOOKMAKER
-# =========================
-
-
-SCRAPER = run_sportaza
-# SCRAPER = run_greenluck
-# SCRAPER = run_betify
-# SCRAPER = run_sportaza
-
-
-# =========================
-# 🔽 CHOIX PARAM build_excel
-# =========================
-EXPORT_DIR = r"C:\Users\dioue\OneDrive\Bureau\Code Python\Scrapping-Bet\Extraction"
-KELLY = 4
-STAKE = 20
-
-
-
-
-if __name__ == "__main__":
-    df = SCRAPER()
-
-    path = build_excel(
-        df,
-        export_dir=EXPORT_DIR,
-        kelly_number=KELLY,
-        stake_number=STAKE
-    )
-
-    print("✅ Excel généré :", path)
+    return filtered_events
