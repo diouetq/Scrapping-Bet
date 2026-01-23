@@ -5,3 +5,5 @@ python-telegram-bot==20.4
 pytz
 selenium
 webdriver-manager
+curl_cffi
+cloudscraper
