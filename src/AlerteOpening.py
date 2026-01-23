@@ -150,7 +150,7 @@ def main():
                     f"⚡ Nouvelle compétition H2H détectée !\n"
                     f"🎰 Bookmaker : {bookmaker}\n"
                     f"🏆 Compétition : {competition}\n"
-                    f"⏰ Cutoff : {cutoff_str}"
+                    f"⏰ Cutoff : {cutoff_str}\n"
                     f"📊 Nombre de cotes : {nb_cotes}\n"
                     f"💰 TRJ Moyen : {avg_trj:.2f}%\n"
  
