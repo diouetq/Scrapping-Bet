@@ -1,4 +1,4 @@
-name: Test Betify API /0
+name: Test Betify API with Tor
 
 on:
   push:
@@ -18,10 +18,18 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install Tor and Dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y tor
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run API test
+      - name: Start Tor Service
+        run: |
+          sudo service tor start
+          # On attend quelques secondes que Tor établisse ses circuits
+          sleep 15 
+
+      - name: Run API test via Tor
         run: python src/test_api.py
