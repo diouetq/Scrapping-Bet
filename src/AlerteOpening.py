@@ -7,6 +7,8 @@ from Scrap_Sportaza import scrape_sportaza
 from Scrap_Betify import scrape_betify
 from Scrap_Greenluck import scrape_greenluck
 import requests
+import inspect
+
 
 # --- CONFIGURATION --- #
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
@@ -42,37 +44,42 @@ def send_telegram_message(msg):
     except Exception as e:
         print(f"⚠️ Erreur Telegram : {e}")
 
-def safe_scrape(scrape_func, sports):
+
+def safe_scrape(scrape_func, sports, use_tor=False):
     try:
-        df = scrape_func(Id_sport=sports)
+        # On vérifie si la fonction (ex: scrape_sportaza) possède 'use_tor' dans ses arguments
+        signature = inspect.signature(scrape_func)
         
+        if 'use_tor' in signature.parameters:
+            # Si elle accepte use_tor, on lui envoie
+            df = scrape_func(Id_sport=sports, use_tor=use_tor)
+        else:
+            # Sinon, on l'appelle normalement (pour Sportaza et Greenluck)
+            print(f"ℹ️ {scrape_func.__name__} ne supporte pas encore Tor, appel direct.")
+            df = scrape_func(Id_sport=sports)
+
+        # --- Le reste de ton code reste identique ---
         if df is None or not isinstance(df, pd.DataFrame):
             print(f"⚠️ {scrape_func.__name__} a renvoyé None ou pas un DataFrame")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
         
         if df.empty:
             print(f"ℹ️ {scrape_func.__name__} n'a trouvé aucune donnée")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])        
         
-        # ✅ Vérifier les colonnes obligatoires
-        required_cols = ["Bookmaker", "Competition", "Extraction", "Cutoff"]
-        missing_cols = [col for col in required_cols if col not in df.columns]
+        # ✅ IMPORTANT : Ne garde PAS uniquement required_cols ici 
+        # car on a besoin de "Evenement" et "Cote" pour le calcul du TRJ plus tard !
+        cols_to_keep = ["Bookmaker", "Competition", "Extraction", "Cutoff", "Evenement", "Competiteur", "Cote"]
         
-        if missing_cols:
-            print(f"⚠️ {scrape_func.__name__} : colonnes manquantes {missing_cols}")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+        # On vérifie lesquelles sont présentes
+        available_cols = [c for c in cols_to_keep if c in df.columns]
         
-        print(f"✅ {scrape_func.__name__} : {len(df)} compétitions trouvées")
-        return df[required_cols]  # ✅ Ne garder que les 4 colonnes nécessaires
+        print(f"✅ {scrape_func.__name__} : {len(df)} lignes trouvées")
+        return df[available_cols]
 
     except Exception as e:
         print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
-        import traceback
-        traceback.print_exc()
         return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
-    
-    
-
     
     
 # --- MAIN --- #
@@ -86,7 +93,7 @@ def main():
 
     # 2️⃣ Scraper tous les bookmakers en mode sécurisé
     print("🔍 Scraping en cours...")
-    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY)
+    df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY, use_tor=True)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
 
