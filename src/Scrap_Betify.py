@@ -20,7 +20,9 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
 
     # Headers réutilisables
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://www.betify.com/"
     }
 
     # ============================
@@ -30,7 +32,7 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
     
     # Utilisation du proxy Tor ici
     try:
-        response_0 = requests.get(url_0, headers=headers, proxies=TOR_PROXIES, timeout=20)
+        response_0 = requests.get(url_0, headers=headers, proxies=TOR_PROXIES, timeout=30)
         data_0 = response_0.json()
     except Exception as e:
         print(f"🚨 Erreur lors du chargement de /0 via Tor: {e}")
@@ -54,7 +56,7 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
         url = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/{ver}"
         try:
             # Proxy Tor ici aussi
-            data = requests.get(url, headers=headers, proxies=TOR_PROXIES, timeout=15).json()
+            data = requests.get(url, headers=headers, proxies=TOR_PROXIES, timeout=30).json()
             all_events.update(data.get("events", {}))
             all_tournaments.update(data.get("tournaments", {}))
         except Exception:
@@ -126,7 +128,7 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
                 )
     
                 try:
-                    api_data = requests.get(api_url, headers=headers, proxies=TOR_PROXIES, timeout=10).json()
+                    api_data = requests.get(api_url, headers=headers, proxies=TOR_PROXIES, timeout=30).json()
                 except Exception:
                     continue
     
