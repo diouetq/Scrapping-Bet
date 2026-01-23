@@ -37,7 +37,7 @@ def send_telegram_message(msg):
         return
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     try:
-        response = requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+        response = requests.post(url, data={"chat_id": CHAT_ID, "text": msg}, timeout=30)        
         print(f"✅ Message Telegram envoyé : {response.status_code}")
     except Exception as e:
         print(f"⚠️ Erreur Telegram : {e}")
