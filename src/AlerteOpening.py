@@ -44,21 +44,32 @@ def send_telegram_message(msg):
 
 def safe_scrape(scrape_func, sports):
     try:
-        response = scrape_func(Id_sport=sports)
-        if response is None:
-            print("⚠️ Scraper a renvoyé None")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+        df = scrape_func(Id_sport=sports)
         
-        print("🔹 Contenu brut :", response[:5000])  # juste les 500 premiers caractères pour debug
-        df = pd.DataFrame(response)  # ou ce que ton scraper fait
+        if df is None or not isinstance(df, pd.DataFrame):
+            print(f"⚠️ {scrape_func.__name__} a renvoyé None ou pas un DataFrame")
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+        
         if df.empty:
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
-        return df
+            print(f"ℹ️ {scrape_func.__name__} n'a trouvé aucune donnée")
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+        
+        # ✅ Vérifier les colonnes obligatoires
+        required_cols = ["Bookmaker", "Competition", "Extraction", "Cutoff"]
+        missing_cols = [col for col in required_cols if col not in df.columns]
+        
+        if missing_cols:
+            print(f"⚠️ {scrape_func.__name__} : colonnes manquantes {missing_cols}")
+            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
+        
+        print(f"✅ {scrape_func.__name__} : {len(df)} compétitions trouvées")
+        return df[required_cols]  # ✅ Ne garder que les 4 colonnes nécessaires
 
     except Exception as e:
         print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
-        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
-    
+        import traceback
+        traceback.print_exc()
+        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff"])
     
 # --- MAIN --- #
 def main():
@@ -99,18 +110,16 @@ def main():
         for comp in new_comp:
             bookmaker, competition = comp.split(" | ", 1)
             df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
-
-            # récupérer la date de cutoff et le nombre de cotes
+    
+            # récupérer la date de cutoff (pas de "nb_cotes" car on n'a plus cette colonne)
             cutoff_list = df_comp["Cutoff"].dropna().unique()
             cutoff_str = cutoff_list[0].strftime("%Y-%m-%d %H:%M") if len(cutoff_list) > 0 else "N/A"
-            nb_cotes = len(df_comp)
-
+    
             msg = (
-                f"⚡ Nouvelle compétition détectée !\n"
+                f"⚡ Nouvelle compétition H2H détectée !\n"
                 f"🎰 Bookmaker : {bookmaker}\n"
                 f"🏆 Compétition : {competition}\n"
-                f"⏰ Cutoff : {cutoff_str}\n"
-                f"📊 Nombre de cotes : {nb_cotes}"
+                f"⏰ Cutoff : {cutoff_str}"
             )
             print(f"📤 Envoi d'alerte : {comp}")
             send_telegram_message(msg)
