@@ -24,5 +24,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run API test
-        run: |
-          python test_api.py
+        run: python src/test_api.py
