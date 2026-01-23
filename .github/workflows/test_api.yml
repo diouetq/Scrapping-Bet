@@ -25,4 +25,4 @@ jobs:
 
       - name: Run API test
         run: |
-          python test_api.py
+          python src/AlerteOpening.py
