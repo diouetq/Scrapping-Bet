@@ -15,12 +15,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - run: pip install --upgrade pip
-      - run: pip install -r requirements.txt
+      # Installation de Tor
+      - name: Install Tor and Socks
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor
+          python -m pip install --upgrade pip
+          pip install requests[socks] pandas pytz  # Ou pip install -r requirements.txt
+
+      # Lancement de Tor
+      - name: Start Tor Service
+        run: |
+          sudo service tor start
+          # Attente obligatoire pour que le circuit Tor soit prêt
+          sleep 15
 
       - name: Lancer le script d'alerte
         env:
@@ -28,19 +41,11 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python src/AlerteOpening.py
 
-      # ✅ TOUJOURS COMMIT ET PUSH
       - name: Commit et push data.json (forcé)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Ajouter data.json
           git add data.json
-          
-          # Toujours commiter (même sans changement)
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          git diff --staged --quiet && git commit --allow-empty -m "🤖 Exécution workflow [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
-          
-          # Push
+          git diff --staged --quiet && git commit --allow-empty -m "🤖 Tor Run [$TIMESTAMP]" || git commit -m "🤖 Mise à jour data.json [$TIMESTAMP]"
           git push
-          echo "✅ Push réussi à $TIMESTAMP"
