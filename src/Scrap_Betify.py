@@ -1,15 +1,15 @@
-# betify.py
-
 import requests
 import pandas as pd
 from datetime import datetime
 import pytz
 
+# Configuration Tor Centralisée
+TOR_PROXIES = {
+    'http': 'socks5h://127.0.0.1:9050',
+    'https': 'socks5h://127.0.0.1:9050'
+}
+
 def scrape_betify(Id_sport=None) -> pd.DataFrame:
-    """
-    Scrape Betify (CrazyBet infra)
-    Brand fixé dans le script
-    """
     BRAND = "2491953325260546049"
     paris_tz = pytz.timezone("Europe/Paris")
     extraction_dt = datetime.now(paris_tz)
@@ -18,25 +18,34 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
     if Id_sport is None:
         Id_sport = ['43', '44', '46']
 
+    # Headers réutilisables
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+
     # ============================
     # 1️⃣ Charger /0
     # ============================
     url_0 = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/0"
-    data_0 = requests.get(url_0,headers={
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
-    }).json()
+    
+    # Utilisation du proxy Tor ici
+    try:
+        response_0 = requests.get(url_0, headers=headers, proxies=TOR_PROXIES, timeout=20)
+        data_0 = response_0.json()
+    except Exception as e:
+        print(f"🚨 Erreur lors du chargement de /0 via Tor: {e}")
+        return pd.DataFrame()
 
     top_versions = data_0.get("top_events_versions", [])
     rest_versions = data_0.get("rest_events_versions", [])
 
-    # parfois top_events_versions est [[...]]
     if len(top_versions) == 1 and isinstance(top_versions[0], list):
         top_versions = top_versions[0]
 
     all_versions = list(set(top_versions + rest_versions))
 
     # ============================
-    # 2️⃣ Charger toutes les versions (top + rest)
+    # 2️⃣ Charger toutes les versions
     # ============================
     all_events = {}
     all_tournaments = {}
@@ -44,12 +53,12 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
     for ver in all_versions:
         url = f"https://api-a-c7818b61-600.sptpub.com/api/v4/prematch/brand/{BRAND}/en/{ver}"
         try:
-            data = requests.get(url).json()
+            # Proxy Tor ici aussi
+            data = requests.get(url, headers=headers, proxies=TOR_PROXIES, timeout=15).json()
+            all_events.update(data.get("events", {}))
+            all_tournaments.update(data.get("tournaments", {}))
         except Exception:
             continue
-
-        all_events.update(data.get("events", {}))
-        all_tournaments.update(data.get("tournaments", {}))
 
     events = all_events
     tournaments = all_tournaments
@@ -117,7 +126,7 @@ def scrape_betify(Id_sport=None) -> pd.DataFrame:
                 )
     
                 try:
-                    api_data = requests.get(api_url).json()
+                    api_data = requests.get(api_url, headers=headers, proxies=TOR_PROXIES, timeout=10).json()
                 except Exception:
                     continue
     
