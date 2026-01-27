@@ -19,7 +19,7 @@ from Scrap_Betify import scrape_betify
 
 def run_sportaza():
     return scrape_sportaza(
-        Id_sport=["1359","1393", "904", "923", "924", "1405", "1406", "1356", "1659", "893"]
+        Id_sport=["1359","1393", "904", "923", "924", "1405", "1406", "1415","2245", "1356", "1659", "893","2239"]
     )
 
 
@@ -40,7 +40,7 @@ def run_betify():
 # =========================
 
 
-SCRAPER = run_betify
+SCRAPER = run_sportaza
 # SCRAPER = run_greenluck
 # SCRAPER = run_betify
 # SCRAPER = run_sportaza
