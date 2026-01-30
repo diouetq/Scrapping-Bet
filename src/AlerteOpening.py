@@ -21,7 +21,7 @@ DATA_FILE = BASE_DIR.parent / "data.json"
 SPORTS_SPORTAZA  = ["1359","1393", "904", "923", "924", "1405", "1406", "1415","2245", "1356", "1659", "893","2239"]
 SPORTS_BETIFY    = ["17","22","43","44","45","46","48"]
 SPORTS_GREENLUCK = ["14","15","16","17","27","28","31","32"]
-SPORTS_PINNACLE  = ["42"]
+SPORTS_PINNACLE  = [ "40","41", "42","43","44", "45"] 
 
 # --- HELPERS --- #
 def load_data():

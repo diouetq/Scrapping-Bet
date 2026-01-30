@@ -21,7 +21,7 @@ def scrape_pinnacle(Id_sport=None) -> pd.DataFrame:
     
     # Valeur par défaut si rien n'est passé
     if Id_sport is None:
-        Id_sport = ["10", "45", "40", "42"]  # Tennis, Cycling, Ski alpin, Ski jumping
+        Id_sport = [ "40","41", "42","43","44", "45"] ## https://guest.api.arcadia.pinnacle.com/0.1/sports?brandId=0
     
     BASE_URL = "https://guest.api.arcadia.pinnacle.com/0.1"
     HEADERS = {
