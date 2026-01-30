@@ -40,7 +40,7 @@ def run_betify():
 # =========================
 
 
-SCRAPER = run_sportaza
+SCRAPER = run_betify
 # SCRAPER = run_greenluck
 # SCRAPER = run_betify
 # SCRAPER = run_sportaza
