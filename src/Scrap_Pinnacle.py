@@ -44,7 +44,7 @@ def scrape_pinnacle(Id_sport=None) -> pd.DataFrame:
             resp = requests.get(url_matchups, headers=HEADERS)
             resp.raise_for_status()
             matchups = resp.json()
-            print(f"   ✅ {len(matchups)} matchups trouvés")
+    #        print(f"   ✅ {len(matchups)} matchups trouvés")
         except Exception as e:
             print(f"   ⚠️ Erreur sport {sport_id}: {e}")
             continue
@@ -112,7 +112,7 @@ def scrape_pinnacle(Id_sport=None) -> pd.DataFrame:
             
             matchups_added += 1
         
-        print(f"   ✅ {matchups_added} matchups ajoutés (cotes non disponibles)")
+  #      print(f"   ✅ {matchups_added} matchups ajoutés (cotes non disponibles)")
     
     # Créer le DataFrame
     df = pd.DataFrame(rows)
@@ -129,6 +129,3 @@ def scrape_pinnacle(Id_sport=None) -> pd.DataFrame:
             "Cote"
         ]
     ]
-
-
-df = scrape_pinnacle(["42"])

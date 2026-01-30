@@ -49,39 +49,44 @@ def send_telegram_message(msg):
 
 def safe_scrape(scrape_func, sports, use_tor=False):
     try:
-        # On vérifie si la fonction (ex: scrape_sportaza) possède 'use_tor' dans ses arguments
+        # 1. Vérification de la signature pour Tor
         signature = inspect.signature(scrape_func)
         
         if 'use_tor' in signature.parameters:
-            # Si elle accepte use_tor, on lui envoie
             df = scrape_func(Id_sport=sports, use_tor=use_tor)
         else:
-            # Sinon, on l'appelle normalement (pour Sportaza et Greenluck)
             print(f"ℹ️ {scrape_func.__name__} ne supporte pas encore Tor, appel direct.")
             df = scrape_func(Id_sport=sports)
 
-        # --- Le reste de ton code reste identique ---
+        # 2. Définition des colonnes indispensables
+        required_cols = ["Bookmaker", "Competition", "Extraction", "Cutoff", "Evenement", "Competiteur", "Cote"]
+
+        # 3. Si le retour est None ou pas un DataFrame
         if df is None or not isinstance(df, pd.DataFrame):
             print(f"⚠️ {scrape_func.__name__} a renvoyé None ou pas un DataFrame")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+            return pd.DataFrame(columns=required_cols)
         
+        # 4. Si le DataFrame est vide
         if df.empty:
             print(f"ℹ️ {scrape_func.__name__} n'a trouvé aucune donnée")
-            return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])        
-        
-        # ✅ IMPORTANT : Ne garde PAS uniquement required_cols ici 
-        # car on a besoin de "Evenement" et "Cote" pour le calcul du TRJ plus tard !
-        cols_to_keep = ["Bookmaker", "Competition", "Extraction", "Cutoff", "Evenement", "Competiteur", "Cote"]
-        
-        # On vérifie lesquelles sont présentes
-        available_cols = [c for c in cols_to_keep if c in df.columns]
+            return pd.DataFrame(columns=required_cols)
+
+        # 5. SÉCURITÉ : On force la présence des colonnes indispensables
+        # Si une colonne manque (ex: Cote ou Cutoff), on la crée avec des valeurs None
+        for col in required_cols:
+            if col not in df.columns:
+                df[col] = None
         
         print(f"✅ {scrape_func.__name__} : {len(df)} lignes trouvées")
-        return df[available_cols]
+
+        # 6. On retourne le DataFrame avec EXACTEMENT les colonnes requises
+        # Cela garantit que le concat final fonctionnera parfaitement
+        return df[required_cols]
 
     except Exception as e:
         print(f"⚠️ Erreur lors du scrape {scrape_func.__name__} : {e}")
-        return pd.DataFrame(columns=["Bookmaker","Competition","Extraction","Cutoff","Evenement","Competiteur","Cote"])
+        return pd.DataFrame(columns=["Bookmaker", "Competition", "Extraction", "Cutoff", "Evenement", "Competiteur", "Cote"])
+    
     
     
 # --- MAIN --- #
