@@ -18,7 +18,7 @@ def scrape_betify(Id_sport=None, use_tor=True) -> pd.DataFrame:
     # Choix du mode de connexion
     proxies = TOR_PROXIES if use_tor else None
     if Id_sport is None:
-        Id_sport = ['43', '44', '46']
+        Id_sport = ["17","43", "44","45", "46", "48"]
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

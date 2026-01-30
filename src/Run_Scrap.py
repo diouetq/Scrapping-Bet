@@ -31,7 +31,7 @@ def run_greenluck():
 
 def run_betify():
     return scrape_betify(
-        Id_sport=["17","22","43", "44","45", "46", "48"],use_tor=False
+        Id_sport=["17","43", "44","45", "46", "48"],use_tor=False
     )
 
 
