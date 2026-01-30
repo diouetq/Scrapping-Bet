@@ -131,3 +131,4 @@ def scrape_pinnacle(Id_sport=None) -> pd.DataFrame:
     ]
 
 
+df = scrape_pinnacle(["42"])

@@ -21,7 +21,7 @@ DATA_FILE = BASE_DIR.parent / "data.json"
 SPORTS_SPORTAZA  = ["1359","1393", "904", "923", "924", "1405", "1406", "1415","2245", "1356", "1659", "893","2239"]
 SPORTS_BETIFY    = ["17","22","43","44","45","46","48"]
 SPORTS_GREENLUCK = ["14","15","16","17","27","28","31","32"]
-SPORTS_PINNACLE= ["42"]
+SPORTS_PINNACLE  = ["42"]
 
 # --- HELPERS --- #
 def load_data():
@@ -98,7 +98,7 @@ def main():
     df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY, use_tor=True)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
-    df_pinnacle = safe_scrape(scrape_pinnacle, SPORTS_PINNACLE, use_tor=True)
+    df_pinnacle = safe_scrape(scrape_pinnacle, SPORTS_PINNACLE, use_tor=False)
 
     # 3️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck, df_pinnacle], ignore_index=True)
@@ -126,40 +126,52 @@ def main():
                 bookmaker, competition = comp_key.split(" | ", 1)
                 
                 # On filtre toutes les lignes de cette compétition précise
-                df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)]
+                df_comp = df_all[(df_all["Bookmaker"] == bookmaker) & (df_all["Competition"] == competition)].copy()
                 
                 # --- CALCULS STATISTIQUES ---
-                # 1. Nombre de cotes (nombre total de lignes pour cette comp)
                 nb_cotes = len(df_comp)
-                
-                # 2. Calcul du TRJ moyen
-                # On regroupe par événement (match) pour calculer le TRJ de chaque match
-                # On part du principe qu'il y a 2 compétiteurs par événement
                 trj_list = []
+                
+                # Conversion forcée en numérique pour éviter les erreurs de type
+                df_comp["Cote"] = pd.to_numeric(df_comp["Cote"], errors='coerce')
+                
                 for event, group in df_comp.groupby("Evenement"):
                     if len(group) == 2:
                         cotes = group["Cote"].values
-                        trj = (1 / ((1/cotes[0]) + (1/cotes[1]))) * 100
-                        trj_list.append(trj)
+                        # Vérification stricte des valeurs
+                        if not pd.isna(cotes).any() and all(c >= 1.0 for c in cotes):
+                            trj = (1 / ((1/cotes[0]) + (1/cotes[1]))) * 100
+                            trj_list.append(trj)
                 
-                avg_trj = sum(trj_list) / len(trj_list) if trj_list else 0
-                # ----------------------------
-
-                # Récupération de la date de cutoff
+                # Détermination de l'affichage du TRJ
+                if trj_list:
+                    avg_trj_val = sum(trj_list) / len(trj_list)
+                    avg_trj_display = f"{avg_trj_val:.2f}%"
+                else:
+                    avg_trj_val = 0.0  # Pour le print console
+                    avg_trj_display = "Non disponible"
+                
+                # --- RÉCUPÉRATION DU CUTOFF ---
                 cutoff_list = df_comp["Cutoff"].dropna().unique()
-                cutoff_str = pd.to_datetime(cutoff_list[0]).strftime("%d/%m %H:%M") if len(cutoff_list) > 0 else "N/A"
+                cutoff_str = "N/A"
+                if len(cutoff_list) > 0 and cutoff_list[0] is not None:
+                    try:
+                        cutoff_str = pd.to_datetime(cutoff_list[0]).strftime("%d/%m %H:%M")
+                    except:
+                        cutoff_str = str(cutoff_list[0])
 
+                # --- CONSTRUCTION DU MESSAGE ---
+                # Utilisation de avg_trj_display pour le message Telegram
                 msg = (
                     f"⚡ Nouvelle compétition H2H détectée !\n"
                     f"🎰 Bookmaker : {bookmaker}\n"
                     f"🏆 Compétition : {competition}\n"
                     f"⏰ Cutoff : {cutoff_str}\n"
                     f"📊 Nombre de cotes : {nb_cotes}\n"
-                    f"💰 TRJ Moyen : {avg_trj:.2f}%\n"
- 
+                    f"💰 TRJ Moyen : {avg_trj_display}\n"
                 )
                 
-                print(f"📤 Envoi d'alerte : {comp_key} ({nb_cotes} cotes, {avg_trj:.2f}% TRJ)")
+                print(f"📤 Envoi d'alerte : {comp_key} ({nb_cotes} cotes, {avg_trj_display})")
                 send_telegram_message(msg)
                 
             except Exception as e:
@@ -178,3 +190,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
