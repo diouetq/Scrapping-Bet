@@ -98,7 +98,7 @@ def main():
     df_betify    = safe_scrape(scrape_betify,    SPORTS_BETIFY, use_tor=True)
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
-    df_pinnacle = safe_scrape(scrape_pinnacle, SPORTS_PINNACLE)
+    df_pinnacle = safe_scrape(scrape_pinnacle, SPORTS_PINNACLE, use_tor=True)
 
     # 3️⃣ Fusionner tous les résultats
     df_all = pd.concat([df_sportaza, df_betify, df_greenluck, df_pinnacle], ignore_index=True)
