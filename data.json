@@ -1,9 +1,13 @@
 {
-  "competitions": [
-    "Greenluck | BDO World Masters",
-    "Greenluck | German Masters",
-    "Greenluck | MODUS Super Series",
-    "Sportaza | Cadel Evans Great Ocean Road Race",
-    "Sportaza | Cadel Evans Great Ocean Road Race, Women"
-  ]
+  "competitions": {
+    "Greenluck | BDO World Masters": "2026-01-30T22:00:27.517038",
+    "Greenluck | German Masters": "2026-01-30T22:00:27.517038",
+    "Greenluck | MODUS Super Series": "2026-01-30T22:00:27.517038",
+    "Pinnacle | AlUla Tour - Stage 5": "2026-01-30T22:00:27.517038",
+    "Pinnacle | Cadel Evans Great Ocean": "2026-01-30T22:00:27.517038",
+    "Pinnacle | Cadel Evans Great Ocean Race - Women": "2026-01-30T22:00:27.517038",
+    "Pinnacle | Super G - Crans Montana - 5021 - Women": "2026-01-30T22:00:27.517038",
+    "Sportaza | Cadel Evans Great Ocean Road Race": "2026-01-30T22:00:27.517038",
+    "Sportaza | Cadel Evans Great Ocean Road Race, Women": "2026-01-30T22:00:27.517038"
+  }
 }
