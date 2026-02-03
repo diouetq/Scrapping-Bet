@@ -25,7 +25,7 @@ def scrape_sportaza(Id_sport=None) -> pd.DataFrame:
 
     # Valeur par défaut si rien n'est passé
     if Id_sport is None:
-        Id_sport = ["1359","923","924","1380","1405","1406","904","1411","1412","672"]
+        Id_sport = ["1596","1359","923","924","1380","1405","1406","904","1411","1412","672"]
 
     # endpoints dynamiques
     endpoints = [(",".join(Id_sport), "GetOutrightEvents"),
