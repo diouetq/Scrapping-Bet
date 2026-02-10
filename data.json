@@ -1,15 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Olympics - 4 x 7.5 km Relay Men": "2026-02-03T16:22:53.461298",
-    "Pinnacle | Olympics - 4 x 6 km Relay Mixed": "2026-02-03T16:22:53.461298",
-    "Betify | Cross-Country Olympic Specials": "2026-02-03T16:22:53.461298",
-    "Sportaza | Curling": "2026-02-03T16:22:53.461298",
-    "Greenluck | World Grand Prix": "2026-02-03T16:22:53.461298",
-    "Pinnacle | Olympics - 10km Freestyle Men": "2026-02-03T16:22:53.461298",
-    "Sportaza | Biatlon": "2026-02-03T16:22:53.461298",
-    "Pinnacle | Olympics - Downhill Men": "2026-02-03T16:22:53.461298",
-    "Sportaza | Milano Cortina 2026": "2026-02-03T16:22:53.461298",
-    "Pinnacle | Olympics - Downhill Women": "2026-02-03T16:22:53.461298",
     "Pinnacle | Olympics - 15 km Individual Women": "2026-02-03T17:33:06.533355",
     "Pinnacle | Olympics - 20 km Individual Men": "2026-02-03T17:33:06.533355",
     "Pinnacle | Etoile de Besseges - Stage 1": "2026-02-03T17:33:06.533355",
@@ -125,6 +115,7 @@
     "Greenluck | Combined. Women. H2H": "2026-02-10T06:50:04.658640",
     "Greenluck | Giant Slalom. Women. H2H": "2026-02-10T09:40:27.490476",
     "Betify | Mixed Team": "2026-02-10T11:37:15.144829",
-    "Sportaza | Curling - Femmes": "2026-02-10T12:36:23.120186"
+    "Sportaza | Curling - Femmes": "2026-02-10T12:36:23.120186",
+    "Sportaza | Curling": "2026-02-10T16:35:26.914168"
   }
 }
