@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Olympics - 15 km Individual Women": "2026-02-03T17:33:06.533355",
-    "Pinnacle | Olympics - 20 km Individual Men": "2026-02-03T17:33:06.533355",
-    "Pinnacle | Etoile de Besseges - Stage 1": "2026-02-03T17:33:06.533355",
     "Sportaza | Etoile de Besseges-Tour du Gard": "2026-02-03T19:31:14.334216",
     "Sportaza | Etoile de Besseges-Tour Du Gard, Stage 1": "2026-02-03T19:31:14.334216",
     "Betify | Etoile De Besseges-Tour Du Gard, Stage 1": "2026-02-04T04:24:48.559718",
@@ -116,6 +113,9 @@
     "Greenluck | Giant Slalom. Women. H2H": "2026-02-10T09:40:27.490476",
     "Betify | Mixed Team": "2026-02-10T11:37:15.144829",
     "Sportaza | Curling - Femmes": "2026-02-10T12:36:23.120186",
-    "Sportaza | Curling": "2026-02-10T16:35:26.914168"
+    "Sportaza | Curling": "2026-02-10T16:35:26.914168",
+    "Pinnacle | Olympics - 15 km Individual Women": "2026-02-10T17:41:35.956378",
+    "Betify | Super G": "2026-02-10T17:41:35.956378",
+    "Betify | Individual Women": "2026-02-10T17:41:35.956378"
   }
 }
