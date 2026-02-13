@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "Sportaza | Patinage de vitesse": "2026-02-06T16:29:09.076060",
-    "Sportaza | Ski alpin": "2026-02-06T16:29:09.076060",
     "Sportaza | Patinage de vitesse, Femmes": "2026-02-06T19:07:20.971373",
     "Sportaza | Biathlon féminin": "2026-02-06T19:49:30.225342",
     "Sportaza | Volta Valenciana, Étape 4": "2026-02-06T19:49:30.225342",
@@ -118,6 +116,8 @@
     "Betify | Vuelta Murcia, Stage 1": "2026-02-13T05:05:50.461761",
     "Sportaza | Vuelta Murcia, Stage 1": "2026-02-13T07:18:04.832272",
     "Sportaza | Tour de La Provence": "2026-02-13T07:18:04.832272",
-    "Betify | Interval Start Free 10km": "2026-02-13T08:58:48.250094"
+    "Betify | Interval Start Free 10km": "2026-02-13T08:58:48.250094",
+    "Pinnacle | Olympics - Individual Large Hill Women": "2026-02-13T17:06:18.448167",
+    "Sportaza | Ski alpin": "2026-02-13T17:06:18.448167"
   }
 }
