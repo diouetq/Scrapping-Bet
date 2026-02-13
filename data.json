@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Greenluck | Mixed Relay. H2H": "2026-02-06T06:33:13.560676",
-    "Greenluck | Skiathlon. Men. H2H": "2026-02-06T06:33:13.560676",
-    "Greenluck | Skiathlon. Women. H2H": "2026-02-06T06:33:13.560676",
     "Pinnacle | 10km Pursuit Tyumen - Women": "2026-02-06T07:33:05.314708",
     "Pinnacle | Volta Valencia": "2026-02-06T09:57:28.449486",
     "Betify | Skiathlon Women": "2026-02-06T11:23:47.194601",
@@ -121,6 +118,8 @@
     "Betify | Tour de la Provence, Stage 1": "2026-02-12T23:40:35.442929",
     "Greenluck | Interval Freestyle. Men. H2H": "2026-02-13T00:02:08.782259",
     "Pinnacle | Olympics - 7.5 km Sprint Women": "2026-02-13T03:18:54.342085",
-    "Betify | Vuelta Murcia, Stage 1": "2026-02-13T05:05:50.461761"
+    "Betify | Vuelta Murcia, Stage 1": "2026-02-13T05:05:50.461761",
+    "Sportaza | Vuelta Murcia, Stage 1": "2026-02-13T07:18:04.832272",
+    "Sportaza | Tour de La Provence": "2026-02-13T07:18:04.832272"
   }
 }
