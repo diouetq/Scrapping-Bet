@@ -1,11 +1,5 @@
 {
   "competitions": {
-    "Betify | UAE Tour, Stage 4, Women": "2026-02-08T04:21:20.860968",
-    "Pinnacle | Olympics - Sprint Women": "2026-02-08T04:21:20.860968",
-    "Betify | Tour of Oman, Stage 2": "2026-02-08T04:21:20.860968",
-    "Betify | Volta Valenciana, Stage 5": "2026-02-08T04:21:20.860968",
-    "Betify | Etoile de Besseges-Tour du Gard, Stage 5": "2026-02-08T04:21:20.860968",
-    "Pinnacle | Olympics - 10km Freestyle Women": "2026-02-08T04:21:20.860968",
     "Pinnacle | Olympics - Sprint Men": "2026-02-08T05:44:41.610283",
     "Greenluck | ": "2026-02-08T09:05:43.414590",
     "Betify | Downhill Women": "2026-02-08T09:05:43.414590",
@@ -121,6 +115,10 @@
     "Betify | Clasica de Almeria": "2026-02-14T19:35:47.351581",
     "Sportaza | Tour de La Provence - Étape 3": "2026-02-14T19:35:47.351581",
     "Pinnacle | Olympics - 4 x 7.5 km Relay Men": "2026-02-14T20:19:50.235964",
-    "Betify | Tour de la Provence, Stage 3": "2026-02-15T03:18:06.560300"
+    "Betify | Tour de la Provence, Stage 3": "2026-02-15T03:18:06.560300",
+    "Betify | Pursuit Women": "2026-02-15T05:05:57.577592",
+    "Pinnacle | UAE Tour - Stage 1": "2026-02-15T05:05:57.577592",
+    "Pinnacle | UAE Tour": "2026-02-15T05:05:57.577592",
+    "Betify | Volta Valenciana Femenina, Stage 4": "2026-02-15T05:05:57.577592"
   }
 }
