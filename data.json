@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "Sportaza | Vuelta Murcia, Stage 1": "2026-02-13T07:18:04.832272",
-    "Sportaza | Tour de La Provence": "2026-02-13T07:18:04.832272",
     "Betify | Interval Start Free 10km": "2026-02-13T08:58:48.250094",
     "Pinnacle | Olympics - Individual Large Hill Women": "2026-02-13T17:06:18.448167",
     "Sportaza | Ski alpin": "2026-02-13T17:06:18.448167",
@@ -127,6 +125,7 @@
     "Betify | Volta ao Algarve - Stage 3": "2026-02-20T00:55:58.295988",
     "Pinnacle | Olympics - 50km Classical Technique Men": "2026-02-20T05:07:17.094753",
     "Greenluck | Mass Start. Women. H2H": "2026-02-20T06:08:39.457800",
-    "Greenluck | Classic Mass Start. Men. H2H": "2026-02-20T07:15:03.685836"
+    "Greenluck | Classic Mass Start. Men. H2H": "2026-02-20T07:15:03.685836",
+    "Sportaza | Ski de Fond": "2026-02-20T08:00:00.021908"
   }
 }
