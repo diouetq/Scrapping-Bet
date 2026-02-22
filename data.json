@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "Betify | Pursuit Women": "2026-02-15T05:05:57.577592",
-    "Pinnacle | UAE Tour - Stage 1": "2026-02-15T05:05:57.577592",
-    "Pinnacle | UAE Tour": "2026-02-15T05:05:57.577592",
-    "Betify | Volta Valenciana Femenina, Stage 4": "2026-02-15T05:05:57.577592",
     "Pinnacle | Volta Valenciana Women - Stage 4": "2026-02-15T06:08:31.983422",
     "Greenluck | Pursuit. Women. H2H": "2026-02-15T07:07:31.499812",
     "Pinnacle | Olympics - 10 km Pursuit Women": "2026-02-15T07:07:31.499812",
@@ -115,6 +111,8 @@
     "Pinnacle | UAE Tour - Stage 7": "2026-02-21T20:31:40.961622",
     "Sportaza | UAE Tour , Étape 7": "2026-02-21T20:31:40.961622",
     "Pinnacle | Tour des Alpes-Maritimes": "2026-02-22T01:04:43.901456",
-    "Betify | UAE Tour, Stage 7": "2026-02-22T01:04:43.901456"
+    "Betify | UAE Tour, Stage 7": "2026-02-22T01:04:43.901456",
+    "Betify | Tour des Alpes-Maritimes": "2026-02-22T05:10:30.201842",
+    "Betify | Volta ao Algarve - Stage 5": "2026-02-22T05:10:30.201842"
   }
 }
