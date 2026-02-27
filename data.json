@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Vuelta Andalucia - Stage 4": "2026-02-20T23:36:07.544633",
-    "Pinnacle | Volta ao Algarve - Stage 4": "2026-02-20T23:36:07.544633",
-    "Pinnacle | UAE Tour - Stage 6": "2026-02-20T23:36:07.544633",
-    "Pinnacle | Classic Var": "2026-02-20T23:36:07.544633",
     "Betify | UAE Tour, Stage 6": "2026-02-21T04:20:42.262999",
     "Betify | Volta ao Algarve - Stage 4": "2026-02-21T04:20:42.262999",
     "Sportaza | Uae Tour, Stage 6": "2026-02-21T06:57:36.149913",
@@ -47,6 +43,7 @@
     "Betify | Omloop Het Nieuwsblad Women": "2026-02-27T15:10:20.410008",
     "Betify | Falun": "2026-02-27T15:10:20.410008",
     "Sportaza | Super G Féminin, Soldeu I": "2026-02-27T19:53:34.866805",
-    "Pinnacle | Soldeu - Super G - 5006 - Women": "2026-02-27T22:38:28.535602"
+    "Pinnacle | Soldeu - Super G - 5006 - Women": "2026-02-27T22:38:28.535602",
+    "Pinnacle | Downhill Garmisch Partenkirchen - 0055": "2026-02-27T23:54:18.261509"
   }
 }
