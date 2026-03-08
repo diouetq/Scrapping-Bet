@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | 20km Individual Kontiolahti": "2026-03-01T02:28:32.029951",
-    "Pinnacle | 15km Individual Kontiolahti - Women": "2026-03-01T02:28:32.029951",
-    "Pinnacle | Skiathlon Mix Falun - 2249 - Women": "2026-03-01T02:28:32.029951",
-    "Pinnacle | Skiathlon Mix Falun - 2250": "2026-03-01T02:28:32.029951",
     "Pinnacle | HS235 Kulm - Event 2 - 3158": "2026-03-01T05:40:24.579114",
     "Sportaza | Super G Féminin, Soldeu II": "2026-03-01T07:12:03.574033",
     "Sportaza | Vol à ski, Kulm Mitterndorf HS235 II Qualification": "2026-03-01T08:46:12.104077",
@@ -77,6 +73,8 @@
     "Pinnacle | Super G Val Di Fassa - 0050 Women": "2026-03-07T21:23:47.136260",
     "Sportaza | Slalom, Kranjska Gora": "2026-03-07T21:23:47.136260",
     "Greenluck | Race. H2H": "2026-03-07T21:56:59.078025",
-    "Betify | Paris - Nice, Stage 1": "2026-03-08T02:28:33.825669"
+    "Betify | Paris - Nice, Stage 1": "2026-03-08T02:28:33.825669",
+    "Betify | Paris - Nice": "2026-03-08T04:25:50.277447",
+    "Betify | Tirreno - Adriatico, Stage 1": "2026-03-08T04:25:50.277447"
   }
 }
