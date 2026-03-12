@@ -1,6 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | 10km Interval Classic Lahti - 2255 - Women": "2026-03-05T09:28:25.138195",
     "Betify | Kontiolahti": "2026-03-05T18:17:45.435497",
     "Sportaza | Strade Bianche, Femmes": "2026-03-05T18:17:45.435497",
     "Sportaza | Descente Féminin, Val di Fassa": "2026-03-05T19:38:42.863383",
@@ -96,6 +95,8 @@
     "Sportaza | 7.5km Sprint Féminin, Otepaeae": "2026-03-12T06:32:52.423949",
     "Sportaza | Sprint, Drammen (C)": "2026-03-12T07:32:27.640872",
     "Pinnacle | Sprint Classic Drammen - 2260": "2026-03-12T08:05:45.913649",
-    "Greenluck | Sprint 7,5km. Women. H2H": "2026-03-12T09:00:19.549095"
+    "Greenluck | Sprint 7,5km. Women. H2H": "2026-03-12T09:00:19.549095",
+    "Greenluck | Sprint Classic. Women. H2H": "2026-03-12T09:57:39.842720",
+    "Greenluck | Sprint Classic. Men. H2H": "2026-03-12T09:57:39.842720"
   }
 }
