@@ -54,10 +54,11 @@ def build_excel(df, bookmaker_name=None, export_dir=".", kelly_number=4, stake_n
         "%_boost",          # L
         f"Kelly_{kelly_number}",   # M
         f"Stake_{stake_number}",   # N
-        "Potential_Payout",          # O
+        "Potential_Payout",        # O
         "Surebet",                 # P
-        "TRJ_Book"                 # Q
-            ]
+        "TRJ_Book",                # Q
+        "TRJ_PS3838",              # R  ← NOUVEAU
+    ]
     
     
     # =========================
@@ -132,7 +133,8 @@ def build_excel(df, bookmaker_name=None, export_dir=".", kelly_number=4, stake_n
                 f'=IFERROR(IF(H{idx}="","",((F{idx}-1)*(1/H{idx})-(1-(1/H{idx})))/(F{idx}-1)/{kelly_fraction}*{stake_value})*100,"")', # N              
                 f'=IF(OR(F{idx}="",N{idx}=""), "", F{idx}*N{idx})',  # O Potential_Payout
                 "",  # P Surebet
-                ""   # Q TRJ_Book
+                "",   # Q TRJ_Book
+                "",   # R TRJ_PS3838
             ])
 
         # TRJ et Surebet identique à avant
@@ -146,6 +148,9 @@ def build_excel(df, bookmaker_name=None, export_dir=".", kelly_number=4, stake_n
                 ws.cell(row=idx2, column=16).value = f'=IF(AND(F{idx2}<>"",G{idx1}<>""),IF(1/((1/F{idx2})+(1/G{idx1}))>1,"YES","NO"),"")'
                 ws.cell(row=idx1, column=17).value = f'=IF(AND(F{idx1}<>"",F{idx2}<>""),1/((1/F{idx1})+(1/F{idx2})),"")'
                 ws.cell(row=idx2, column=17).value = f'=IF(AND(F{idx2}<>"",F{idx1}<>""),1/((1/F{idx2})+(1/F{idx1})),"")'
+                ws.cell(row=idx1, column=18).value = f'=IF(AND(G{idx1}<>"",G{idx2}<>""),1/((1/G{idx1})+(1/G{idx2})),"")'
+                ws.cell(row=idx2, column=18).value = f'=IF(AND(G{idx2}<>"",G{idx1}<>""),1/((1/G{idx2})+(1/G{idx1})),"")'
+
 
         # Mise en forme identique à avant
         for row_cells in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=ws.max_column):
@@ -175,6 +180,7 @@ def build_excel(df, bookmaker_name=None, export_dir=".", kelly_number=4, stake_n
             ws[f"M{ridx}"].number_format = '0.0%'
             ws[f"N{ridx}"].number_format = '€#,##0'
             ws[f"O{ridx}"].number_format = '€#,##0'
+
 
         # Conditional formatting identique à avant
         last_col_letter = get_column_letter(ws.max_column)

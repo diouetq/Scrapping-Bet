@@ -8,6 +8,7 @@ from Scrap_Sportaza import scrape_sportaza
 from Scrap_Betify import scrape_betify
 from Scrap_Greenluck import scrape_greenluck
 from Scrap_Pinnacle import scrape_pinnacle
+from Scrap_MyStake import scrape_mystake
 import requests
 import inspect
 
@@ -22,7 +23,8 @@ DATA_FILE = BASE_DIR.parent / "data.json"
 SPORTS_SPORTAZA  = ["1596","1359","1373","1393","1387", "904", "923", "924", "1405", "1406", "1415","2245", "1356", "1659", "893","2239"]
 SPORTS_BETIFY    = ["17","43","44","45","46","48"]
 SPORTS_GREENLUCK = ["14","15","16","17","27","28","31"]
-SPORTS_PINNACLE  = ["40","41", "42","43","44", "45"] 
+SPORTS_PINNACLE  = ["40","41", "42","43","44", "45"]
+SPORTS_MYSTAKE  = ["16","77"] 
 
 # 🗑️ DURÉE DE RÉTENTION : Compétitions plus vieilles que X jours seront supprimées
 RETENTION_DAYS = 7  # Garde 7 jours d'historique
@@ -128,9 +130,10 @@ def main():
     df_sportaza  = safe_scrape(scrape_sportaza,  SPORTS_SPORTAZA)
     df_greenluck = safe_scrape(scrape_greenluck, SPORTS_GREENLUCK)
     df_pinnacle  = safe_scrape(scrape_pinnacle,  SPORTS_PINNACLE, use_tor=False)
+    df_mystake  = safe_scrape(scrape_mystake,  SPORTS_MYSTAKE, use_tor=False)
 
     # 3️⃣ Fusionner tous les résultats
-    df_all = pd.concat([df_sportaza, df_betify, df_greenluck, df_pinnacle], ignore_index=True)
+    df_all = pd.concat([df_sportaza, df_betify, df_greenluck, df_pinnacle, df_mystake], ignore_index=True)
     print(f"📊 Total de lignes scrapées : {len(df_all)}")
 
     # 4️⃣ Créer un SET unique de "Bookmaker | Competition"

@@ -10,7 +10,7 @@ from Excel_builder import build_excel
 from Scrap_Sportaza import scrape_sportaza
 from Scrap_Greenluck import scrape_greenluck
 from Scrap_Betify import scrape_betify
-
+from Scrap_MyStake import scrape_mystake
 
 # =========================
 # 🔽 DEF RUN : choisir les sports
@@ -19,19 +19,25 @@ from Scrap_Betify import scrape_betify
 
 def run_sportaza():
     return scrape_sportaza(
-        Id_sport=["1596","1359","1373","1393","1387", "904", "923", "924", "1405", "1406", "1415","2245", "1356", "1659", "893","2239"]
+        Id_sport=["1248","1596","1359","1373","1393","1387", "904", "923", "924", "1405", "1406","1407","1408", "1415","2245", "1356", "1659", "893","2239","2245","1410","1409","1402"]
     )
 
 
 def run_greenluck():
     return scrape_greenluck(
-        Id_sport=["14", "15", "16", "17", "27","28","31", "32"]
+        Id_sport=["14", "15", "16", "17", "27","28","29","31", "32"]
     )
 
 
 def run_betify():
     return scrape_betify(
-        Id_sport=["30","17","43", "44","45", "46", "48"],use_tor=False
+        Id_sport=["90","40","30","17","43", "44","45", "46", "48","49","50","102","103","105","36","190"],use_tor=False
+    )
+
+
+def run_mystake():
+    return scrape_mystake(
+        Id_sport=["16"] #77 F1
     )
 
 
@@ -40,11 +46,11 @@ def run_betify():
 # =========================
 
 
-SCRAPER = run_sportaza
+SCRAPER = run_betify
 # SCRAPER = run_greenluck
 # SCRAPER = run_betify
 # SCRAPER = run_sportaza
-
+# SCRAPER = run_mystake
 
 # =========================
 # 🔽 CHOIX PARAM build_excel
