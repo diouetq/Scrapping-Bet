@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Betify | Itzulia Basque Country, Stage 5": "2026-04-10T06:13:17.979113",
-    "Sportaza | Tour du Pays Basque (Itzulia) 2026 - Étape 5": "2026-04-10T06:13:17.979113",
-    "Betify | Region Pays de la Loire, Stage 4": "2026-04-10T06:13:17.979113",
     "MyStake | Itzulia Basque Country Stage 5": "2026-04-10T08:02:04.369460",
     "MyStake | Region Pays de la Loire Tour Stage 4": "2026-04-10T08:02:04.369460",
     "MyStake | Paris - Roubaix, Women Outright": "2026-04-10T08:02:04.369460",
@@ -47,6 +44,8 @@
     "Pinnacle | Classic Grand Besancon Doubs": "2026-04-16T19:43:13.176932",
     "Betify | De Brabantse Pijl": "2026-04-16T23:03:12.005867",
     "Betify | O Gran Camino, Stage 4": "2026-04-16T23:03:12.005867",
-    "Betify | Grand Besancon Doubs": "2026-04-17T05:17:48.720586"
+    "Betify | Grand Besancon Doubs": "2026-04-17T05:17:48.720586",
+    "MyStake | Grand Besancon Doubs Outright": "2026-04-17T07:08:07.588730",
+    "MyStake | O Gran Camino Stage 4": "2026-04-17T07:08:07.588730"
   }
 }
