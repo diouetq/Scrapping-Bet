@@ -1,10 +1,5 @@
 {
   "competitions": {
-    "MyStake | de Brabantse Pijl Outright": "2026-04-16T08:15:37.866825",
-    "MyStake | Amstel Gold Race Outright": "2026-04-16T08:15:37.866825",
-    "MyStake | Amstel Gold Race Women Outright": "2026-04-16T08:15:37.866825",
-    "MyStake | O Gran Camino Stage 3": "2026-04-16T08:15:37.866825",
-    "Sportaza | O Gran Camino, Stage 3": "2026-04-16T08:15:37.866825",
     "Greenluck | World Championship": "2026-04-16T09:54:15.396507",
     "Pinnacle | Amstel Gold - Women": "2026-04-16T19:43:13.176932",
     "Pinnacle | O Gran Camino - Stage 4": "2026-04-16T19:43:13.176932",
@@ -56,6 +51,7 @@
     "Sportaza | Tour des Alpes, Étape 4": "2026-04-23T07:12:58.740731",
     "MyStake | Liege-Bastogne-Liege Outright": "2026-04-23T07:12:58.740731",
     "MyStake | Tour of the Alps Stage 4": "2026-04-23T07:12:58.740731",
-    "MyStake | Vuelta a Asturias Outright": "2026-04-23T07:12:58.740731"
+    "MyStake | Vuelta a Asturias Outright": "2026-04-23T07:12:58.740731",
+    "Sportaza | Tour des Asturies, Étape 1": "2026-04-23T09:05:15.146997"
   }
 }
