@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour of the Alps Stage 2": "2026-04-21T09:03:45.775297",
-    "MyStake | La Fleche Wallonne Women Outright": "2026-04-21T09:03:45.775297",
-    "MyStake | La Fleche Wallonne Outright": "2026-04-21T09:03:45.775297",
     "Betify | La Fleche Wallonne": "2026-04-21T12:50:11.986754",
     "Betify | La Fleche Wallonne, Women": "2026-04-21T14:26:56.286356",
     "MyStake | 2026 season Outright": "2026-04-21T15:56:56.803913",
@@ -65,6 +62,9 @@
     "MyStake | Tour of Turkiye Stage 3": "2026-04-27T19:51:24.028142",
     "Pinnacle | Tour Of Turkey - Stage 3": "2026-04-27T20:47:39.428750",
     "Betify | Tour of Turkey, Stage 3": "2026-04-27T22:35:54.947962",
-    "Greenluck | Tour de Romandie. Stage Matchups": "2026-04-28T04:50:33.158441"
+    "Greenluck | Tour de Romandie. Stage Matchups": "2026-04-28T04:50:33.158441",
+    "MyStake | Race ": "2026-04-28T09:41:48.362683",
+    "MyStake | Practice 1": "2026-04-28T09:41:48.362683",
+    "Sportaza | Tour of Turkiye": "2026-04-28T09:41:48.362683"
   }
 }
