@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour de Romandie Prologue": "2026-04-27T07:27:48.179082",
-    "MyStake | Tour de Romandie Outright\t": "2026-04-27T07:27:48.179082",
-    "Pinnacle | Tour de Romandie": "2026-04-27T07:27:48.179082",
-    "MyStake | Tour of Turkiye Stage 2": "2026-04-27T07:27:48.179082",
     "Betify | Tour de Romandie, Prologue": "2026-04-27T13:07:52.343474",
     "Betify | Tour de Romandie": "2026-04-27T13:07:52.343474",
     "Sportaza | Tour de Romandie": "2026-04-27T17:00:51.859453",
@@ -63,6 +59,7 @@
     "MyStake | Race H2H": "2026-05-03T09:47:19.701542",
     "Greenluck | Race. H2H": "2026-05-03T09:47:19.701542",
     "Betify | La Vuelta Femenina, Stage 2": "2026-05-03T17:26:26.674544",
-    "Pinnacle | La Vuelta Femenina - Stage 2": "2026-05-03T17:26:26.674544"
+    "Pinnacle | La Vuelta Femenina - Stage 2": "2026-05-03T17:26:26.674544",
+    "MyStake | La Vuelta Femenina stage 2": "2026-05-04T07:44:28.019922"
   }
 }
