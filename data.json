@@ -1,6 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Tour de Romandie - Stage 3": "2026-04-30T20:16:12.598414",
     "Betify | Tour de Romandie, Stage 3": "2026-04-30T23:14:42.187224",
     "Betify | Eschborn - Frankfurt": "2026-04-30T23:14:42.187224",
     "Betify | Tour of Turkey, Stage 6": "2026-05-01T00:10:25.144763",
@@ -55,6 +54,10 @@
     "Sportaza | Tour d'Italie": "2026-05-06T17:10:34.852629",
     "Betify | La Vuelta Femenina, Stage 5": "2026-05-07T04:50:04.442229",
     "MyStake | La Vuelta Femenina stage 5": "2026-05-07T07:36:31.710159",
-    "Pinnacle | La Vuelta Femenina - Stage 5": "2026-05-07T07:36:31.710159"
+    "Pinnacle | La Vuelta Femenina - Stage 5": "2026-05-07T07:36:31.710159",
+    "Betify | Giro d'Italia": "2026-05-07T21:06:10.913909",
+    "Betify | La Vuelta Femenina, Stage 6": "2026-05-07T21:06:10.913909",
+    "Betify | Giro d'Italia, Stage 1": "2026-05-07T21:06:10.913909",
+    "Pinnacle | La Vuelta Femenina - Stage 6": "2026-05-07T21:06:10.913909"
   }
 }
