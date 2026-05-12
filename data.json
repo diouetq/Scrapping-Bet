@@ -1,11 +1,5 @@
 {
   "competitions": {
-    "MyStake | Giro D'Italia, Mountain Classification H2H": "2026-05-05T08:27:15.994904",
-    "MyStake | La Vuelta Femenina stage 3": "2026-05-05T08:27:15.994904",
-    "MyStake | Giro D'Italia, Points Classification H2H": "2026-05-05T08:27:15.994904",
-    "MyStake | Giro Ditalia - Team Classification H2H": "2026-05-05T08:27:15.994904",
-    "MyStake | Giro D'Italia Outright": "2026-05-05T08:27:15.994904",
-    "MyStake | Giro D'Italia, Young Rider Classification H2H": "2026-05-05T08:27:15.994904",
     "MyStake | Giro D'Italia, Stage 1": "2026-05-05T12:59:20.799046",
     "Pinnacle | Giro d Italia - King of the Mountains": "2026-05-05T17:00:46.658987",
     "Pinnacle | La Vuelta Femenina - Stage 4": "2026-05-05T17:00:46.658987",
@@ -41,6 +35,9 @@
     "Betify | Giro d'Italia, Stage 4": "2026-05-11T05:32:24.726623",
     "MyStake | Giro D'Italia, Stage 4": "2026-05-11T08:45:25.668089",
     "Pinnacle | Tour of Hungary - Stage 1": "2026-05-11T23:08:35.680618",
-    "Pinnacle | Tour of Hungary": "2026-05-11T23:08:35.680618"
+    "Pinnacle | Tour of Hungary": "2026-05-11T23:08:35.680618",
+    "MyStake | Tour of Hungary Outright": "2026-05-12T09:28:11.988351",
+    "MyStake | Tour of Hungary, Stage 1": "2026-05-12T09:28:11.988351",
+    "MyStake | Giro D'Italia Outright": "2026-05-12T09:28:11.988351"
   }
 }
