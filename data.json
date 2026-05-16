@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | Giro D'Italia, Stage 2": "2026-05-09T07:00:00.267550",
-    "Betify | Giro d'Italia, Stage 2": "2026-05-09T07:00:00.267550",
-    "MyStake | La Vuelta Femenina stage 7": "2026-05-09T07:00:00.267550",
-    "Betify | La Vuelta Femenina, Stage 7": "2026-05-09T07:00:00.267550",
     "Betify | Tro-Bro Leon": "2026-05-10T04:07:15.744688",
     "Betify | Giro d'Italia, Stage 3": "2026-05-10T04:07:15.744688",
     "MyStake | Giro D'Italia, Stage 3": "2026-05-10T08:32:16.068006",
@@ -44,6 +40,11 @@
     "Pinnacle | Giro d Italia - Stage 8": "2026-05-16T01:21:08.270853",
     "Pinnacle | Tour of Hungary - Stage 4": "2026-05-16T01:21:08.270853",
     "Betify | Tour du Finistere": "2026-05-16T04:46:24.051743",
-    "Betify | Giro d'Italia": "2026-05-16T04:46:24.051743"
+    "Betify | Giro d'Italia": "2026-05-16T04:46:24.051743",
+    "MyStake | Giro D'Italia, Stage 8": "2026-05-16T07:09:16.733023",
+    "MyStake | Tour of Hungary, Stage 4": "2026-05-16T07:09:16.733023",
+    "MyStake | Tour du Finistere Outright": "2026-05-16T07:09:16.733023",
+    "Greenluck | Tour of Hungary. Stage Matchups": "2026-05-16T07:09:16.733023",
+    "MyStake | Itzulia Basque Country Women Stage 2": "2026-05-16T07:09:16.733023"
   }
 }
