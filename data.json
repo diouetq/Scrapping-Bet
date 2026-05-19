@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour of Hungary Outright": "2026-05-12T09:28:11.988351",
-    "MyStake | Tour of Hungary, Stage 1": "2026-05-12T09:28:11.988351",
-    "MyStake | Giro D'Italia Outright": "2026-05-12T09:28:11.988351",
     "Betify | Tour of Hungary": "2026-05-12T16:00:21.095375",
     "Betify | Tour of Hungary, Stage 1": "2026-05-12T16:00:21.095375",
     "Sportaza | Tour de Hongrie": "2026-05-12T18:09:50.947628",
@@ -47,6 +44,9 @@
     "Greenluck | Classique Dunkerque. Race Matchups": "2026-05-18T20:22:16.242027",
     "Pinnacle | Giro d Italia - Stage 10": "2026-05-18T20:22:16.242027",
     "Pinnacle | Classique Dunkerque": "2026-05-18T21:44:10.755012",
-    "Betify | Giro d'Italia, Stage 10": "2026-05-18T21:44:10.755012"
+    "Betify | Giro d'Italia, Stage 10": "2026-05-18T21:44:10.755012",
+    "MyStake | Practice 1": "2026-05-19T10:02:53.353182",
+    "MyStake | Race ": "2026-05-19T10:02:53.353182",
+    "MyStake | Giro D'Italia Outright": "2026-05-19T10:02:53.353182"
   }
 }
