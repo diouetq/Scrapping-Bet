@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Giro D'Italia, Stage 7": "2026-05-15T08:30:11.244742",
-    "MyStake | Tour of Hungary, Stage 3": "2026-05-15T08:30:11.244742",
-    "Betify | Tour of Hungary, Stage 3": "2026-05-15T08:30:11.244742",
     "Pinnacle | Tour du Finistere": "2026-05-16T01:21:08.270853",
     "Pinnacle | Itzulia Women - Stage 2": "2026-05-16T01:21:08.270853",
     "Pinnacle | Giro d Italia - Stage 8": "2026-05-16T01:21:08.270853",
@@ -55,6 +52,10 @@
     "Pinnacle | 4 Jours de Dunkerque - Stage 3": "2026-05-21T19:18:13.785038",
     "Betify | 4 Jours de Dunkerque, Stage 3": "2026-05-21T22:39:49.438895",
     "Betify | Vuelta a Burgos Feminas, Stage 2": "2026-05-21T22:39:49.438895",
-    "Betify | Giro d'Italia, Stage 13": "2026-05-21T22:39:49.438895"
+    "Betify | Giro d'Italia, Stage 13": "2026-05-21T22:39:49.438895",
+    "MyStake | Vuelta a Burgos Feminas Stage 2": "2026-05-22T08:44:53.730254",
+    "Sportaza | 4 Jours de Dunkerque": "2026-05-22T08:44:53.730254",
+    "MyStake | Giro D'Italia, Stage 13": "2026-05-22T08:44:53.730254",
+    "MyStake | 4 Jours de Dunkerque, Stage 3": "2026-05-22T08:44:53.730254"
   }
 }
