@@ -1,10 +1,5 @@
 {
   "competitions": {
-    "MyStake | Giro D'Italia, Stage 8": "2026-05-16T07:09:16.733023",
-    "MyStake | Tour of Hungary, Stage 4": "2026-05-16T07:09:16.733023",
-    "MyStake | Tour du Finistere Outright": "2026-05-16T07:09:16.733023",
-    "Greenluck | Tour of Hungary. Stage Matchups": "2026-05-16T07:09:16.733023",
-    "MyStake | Itzulia Basque Country Women Stage 2": "2026-05-16T07:09:16.733023",
     "Pinnacle | Tour of Hungary - Stage 5": "2026-05-16T22:07:09.567001",
     "Pinnacle | Giro d Italia - Stage 9": "2026-05-16T22:07:09.567001",
     "Pinnacle | Boucles de l'Aulne": "2026-05-16T22:07:09.567001",
@@ -58,6 +53,10 @@
     "Betify | 4 Jours de Dunkerque, Stage 4": "2026-05-23T05:25:27.654643",
     "Betify | Giro d'Italia, Stage 14": "2026-05-23T05:25:27.654643",
     "Betify | Veenendaal-Veenendaal Classic": "2026-05-23T05:25:27.654643",
-    "Betify | Vuelta a Burgos Feminas, Stage 3": "2026-05-23T05:25:27.654643"
+    "Betify | Vuelta a Burgos Feminas, Stage 3": "2026-05-23T05:25:27.654643",
+    "MyStake | Giro D'Italia, Stage 14": "2026-05-23T07:55:19.010620",
+    "MyStake | Vuelta a Burgos Feminas Stage 3": "2026-05-23T07:55:19.010620",
+    "MyStake | Veenendaal Classic Outright": "2026-05-23T07:55:19.010620",
+    "MyStake | 4 Jours de Dunkerque, Stage 4": "2026-05-23T07:55:19.010620"
   }
 }
