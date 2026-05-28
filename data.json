@@ -1,14 +1,5 @@
 {
   "competitions": {
-    "MyStake | 4 Jours de Dunkerque, Stage 2": "2026-05-21T08:01:45.655472",
-    "Pinnacle | Vuelta a Burgos Feminas": "2026-05-21T08:01:45.655472",
-    "Pinnacle | Giro d Italia - Stage 12": "2026-05-21T08:01:45.655472",
-    "Pinnacle | 4 Jours de Dunkerque - Stage 2": "2026-05-21T08:01:45.655472",
-    "Betify | Vuelta a Burgos Feminas, Stage 1": "2026-05-21T08:01:45.655472",
-    "MyStake | Vuelta a Burgos Feminas Stage 1": "2026-05-21T08:01:45.655472",
-    "MyStake | Giro D'Italia, Stage 12": "2026-05-21T08:01:45.655472",
-    "Pinnacle | Vuelta a Burgos Feminas - Stage 1": "2026-05-21T08:01:45.655472",
-    "MyStake | Vuelta a Burgos Feminas Outright": "2026-05-21T08:01:45.655472",
     "Pinnacle | Vuelta a Burgos Feminas - Stage 2": "2026-05-21T19:18:13.785038",
     "Pinnacle | Giro d Italia - Stage 13": "2026-05-21T19:18:13.785038",
     "Pinnacle | 4 Jours de Dunkerque - Stage 3": "2026-05-21T19:18:13.785038",
@@ -59,6 +50,10 @@
     "Sportaza | Tour d'Italie": "2026-05-27T21:28:12.406453",
     "Pinnacle | Boucles de la Mayenne - Prologue": "2026-05-28T00:07:59.277631",
     "Pinnacle | Giro d Italia - Stage 18": "2026-05-28T00:07:59.277631",
-    "Pinnacle | Boucles de la Mayenne": "2026-05-28T00:07:59.277631"
+    "Pinnacle | Boucles de la Mayenne": "2026-05-28T00:07:59.277631",
+    "Sportaza | Boucles de la Mayenne": "2026-05-28T08:32:19.082525",
+    "MyStake | Boucles de la Mayenne Outright": "2026-05-28T08:32:19.082525",
+    "MyStake | Giro D'Italia, Stage 18 ": "2026-05-28T08:32:19.082525",
+    "MyStake | Boucles de la Mayenne Prologue": "2026-05-28T08:32:19.082525"
   }
 }
