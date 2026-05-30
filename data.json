@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | Giro D'Italia, Stage 14": "2026-05-23T07:55:19.010620",
-    "MyStake | Vuelta a Burgos Feminas Stage 3": "2026-05-23T07:55:19.010620",
-    "MyStake | Veenendaal Classic Outright": "2026-05-23T07:55:19.010620",
-    "MyStake | 4 Jours de Dunkerque, Stage 4": "2026-05-23T07:55:19.010620",
     "MyStake | Sprint Race": "2026-05-23T09:51:44.878579",
     "Pinnacle | Canadian Grand Prix - Sprint": "2026-05-23T12:05:44.562829",
     "Pinnacle | Antwerp Port Epic": "2026-05-23T18:36:31.907208",
@@ -53,6 +49,9 @@
     "Pinnacle | Giro d Italia - Stage 20": "2026-05-29T22:04:43.390395",
     "Betify | Giro d'Italia, Stage 20": "2026-05-30T01:31:29.216517",
     "Betify | Giro d'Italia, Women, Stage 1": "2026-05-30T05:32:29.317374",
-    "Betify | Boucles de la Mayenne, Stage 2": "2026-05-30T05:32:29.317374"
+    "Betify | Boucles de la Mayenne, Stage 2": "2026-05-30T05:32:29.317374",
+    "MyStake | Boucles de la Mayenne, Stage 2": "2026-05-30T08:06:16.031368",
+    "MyStake | Giro D'Italia, Stage 20": "2026-05-30T08:06:16.031368",
+    "Pinnacle | Giro d Italia - Women": "2026-05-30T08:06:16.031368"
   }
 }
