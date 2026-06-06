@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Boucles de la Mayenne, Stage 2": "2026-05-30T08:06:16.031368",
-    "MyStake | Giro D'Italia, Stage 20": "2026-05-30T08:06:16.031368",
-    "Pinnacle | Giro d Italia - Women": "2026-05-30T08:06:16.031368",
     "Pinnacle | Giro d Italia - Stage 21": "2026-05-31T01:36:36.945050",
     "Betify | Boucles de la Mayenne, Stage 3": "2026-05-31T01:36:36.945050",
     "Betify | Giro d'Italia, Women, Stage 2": "2026-05-31T01:36:36.945050",
@@ -36,6 +33,10 @@
     "Pinnacle | Tour Auvergne Rhone Alpes - Stage 1": "2026-06-06T04:16:57.060621",
     "MyStake | Practice 3": "2026-06-06T07:28:15.319399",
     "MyStake | Criterium Du Dauphine Outright": "2026-06-06T07:28:15.319399",
-    "MyStake | Criterium Du Dauphine, Stage 1": "2026-06-06T07:28:15.319399"
+    "MyStake | Criterium Du Dauphine, Stage 1": "2026-06-06T07:28:15.319399",
+    "Betify | Tour Auvergne Rhone Alpes, Stage 1": "2026-06-06T09:35:57.355367",
+    "Betify | Brussels Cycling Classic": "2026-06-06T09:35:57.355367",
+    "Betify | Tour Auvergne Rhone Alpes": "2026-06-06T09:35:57.355367",
+    "Pinnacle | Monaco Grand Prix - Qualifying": "2026-06-06T09:35:57.355367"
   }
 }
