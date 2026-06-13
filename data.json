@@ -1,12 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Brussels Cycling Classic": "2026-06-06T04:16:57.060621",
-    "Betify | Giro d'Italia, Women, Stage 8": "2026-06-06T04:16:57.060621",
-    "Pinnacle | Tour Auvergne Rhone Alpes": "2026-06-06T04:16:57.060621",
-    "Pinnacle | Tour Auvergne Rhone Alpes - Stage 1": "2026-06-06T04:16:57.060621",
-    "MyStake | Practice 3": "2026-06-06T07:28:15.319399",
-    "MyStake | Criterium Du Dauphine Outright": "2026-06-06T07:28:15.319399",
-    "MyStake | Criterium Du Dauphine, Stage 1": "2026-06-06T07:28:15.319399",
     "Betify | Tour Auvergne Rhone Alpes, Stage 1": "2026-06-06T09:35:57.355367",
     "Betify | Brussels Cycling Classic": "2026-06-06T09:35:57.355367",
     "Betify | Tour Auvergne Rhone Alpes": "2026-06-06T09:35:57.355367",
@@ -47,6 +40,13 @@
     "Pinnacle | Tour Auvergne Rhone Alpes - Stage 7": "2026-06-12T20:39:21.546756",
     "Pinnacle | MuurClassic Geraardsbergen": "2026-06-12T20:39:21.546756",
     "Pinnacle | GP Gippingen": "2026-06-12T20:39:21.546756",
-    "Pinnacle | Barcelona-Catalunya Grand Prix - Qualifying": "2026-06-12T20:39:21.546756"
+    "Pinnacle | Barcelona-Catalunya Grand Prix - Qualifying": "2026-06-12T20:39:21.546756",
+    "MyStake | Practice 3": "2026-06-13T07:38:53.433461",
+    "MyStake | GP Gippingen Outright": "2026-06-13T07:38:53.433461",
+    "Betify | Tour Auvergne Rhone Alpes, Stage 7": "2026-06-13T07:38:53.433461",
+    "MyStake | Muur Classic Geraardsbergen Outright": "2026-06-13T07:38:53.433461",
+    "Sportaza | Tour Auvergne-Rhône-Alpes": "2026-06-13T07:38:53.433461",
+    "Sportaza | Copenhague Sprint, Femmes": "2026-06-13T07:38:53.433461",
+    "Betify | GP Gippingen": "2026-06-13T07:38:53.433461"
   }
 }
