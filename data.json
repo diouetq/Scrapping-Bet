@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Criterium Du Dauphine, Stage 3": "2026-06-09T08:10:22.738082",
-    "MyStake | Race ": "2026-06-09T08:10:22.738082",
-    "Betify | Tour Auvergne Rhone Alpes, Stage 3": "2026-06-09T08:10:22.738082",
     "Pinnacle | Circuit Franco-Belge": "2026-06-09T21:04:00.208137",
     "Pinnacle | Tour Auvergne Rhone Alpes - Stage 4": "2026-06-09T21:04:00.208137",
     "MyStake | 2026 season Outright": "2026-06-09T22:46:08.601084",
@@ -47,6 +44,12 @@
     "Pinnacle | Tour de Suisse - Stage 1": "2026-06-16T02:02:10.266271",
     "Pinnacle | Tour of Slovenia - Stage 1": "2026-06-16T02:02:10.266271",
     "Pinnacle | Tour de Suisse - Women - Stage 1": "2026-06-16T02:02:10.266271",
-    "Pinnacle | Tour de Suisse - Women": "2026-06-16T02:02:10.266271"
+    "Pinnacle | Tour de Suisse - Women": "2026-06-16T02:02:10.266271",
+    "MyStake | Tour de Suisse, Women Outright\t": "2026-06-16T12:29:44.344697",
+    "MyStake | Tour de Suisse Outright": "2026-06-16T12:29:44.344697",
+    "MyStake | Tour of Slovenia Outright": "2026-06-16T12:29:44.344697",
+    "MyStake | Tour of Slovenia, Stage 1": "2026-06-16T12:29:44.344697",
+    "MyStake | Tour de Suisse, Stage 1": "2026-06-16T12:29:44.344697",
+    "MyStake | Tour de Suisse, Women Stage 1": "2026-06-16T12:29:44.344697"
   }
 }
