@@ -1,12 +1,5 @@
 {
   "competitions": {
-    "MyStake | Practice 3": "2026-06-13T07:38:53.433461",
-    "MyStake | GP Gippingen Outright": "2026-06-13T07:38:53.433461",
-    "Betify | Tour Auvergne Rhone Alpes, Stage 7": "2026-06-13T07:38:53.433461",
-    "MyStake | Muur Classic Geraardsbergen Outright": "2026-06-13T07:38:53.433461",
-    "Sportaza | Tour Auvergne-Rhône-Alpes": "2026-06-13T07:38:53.433461",
-    "Sportaza | Copenhague Sprint, Femmes": "2026-06-13T07:38:53.433461",
-    "Betify | GP Gippingen": "2026-06-13T07:38:53.433461",
     "Sportaza | Copenhague Sprint": "2026-06-13T10:17:07.999750",
     "Sportaza | GP Gippingen": "2026-06-13T10:17:07.999750",
     "Sportaza | Muur Classic Geraardsbergen": "2026-06-13T10:17:07.999750",
@@ -59,6 +52,9 @@
     "Pinnacle | Tour de Suisse - Stage 4": "2026-06-20T00:03:26.618794",
     "Pinnacle | Tour of Belgium - Stage 4": "2026-06-20T00:03:26.618794",
     "Betify | Tour de Suisse, Stage 4": "2026-06-20T04:38:04.257622",
-    "Betify | La Route d'Occitanie, Stage 3": "2026-06-20T04:38:04.257622"
+    "Betify | La Route d'Occitanie, Stage 3": "2026-06-20T04:38:04.257622",
+    "Sportaza | Tour de Suisse, Féminin": "2026-06-20T08:06:05.076912",
+    "Betify | Tour de Suisse, Women, Stage 4": "2026-06-20T08:06:05.076912",
+    "Betify | Tour of Slovenia, Stage 4": "2026-06-20T08:06:05.076912"
   }
 }
