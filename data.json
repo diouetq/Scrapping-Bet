@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Betify | Tour de Suisse, Stage 2": "2026-06-18T05:18:00.218522",
-    "Betify | La Route d'Occitanie, Stage 1": "2026-06-18T05:18:00.218522",
-    "Betify | Tour de Suisse, Women, Stage 2": "2026-06-18T05:18:00.218522",
     "MyStake | Race ": "2026-06-18T09:49:42.185765",
     "Sportaza | La Route dOccitanie": "2026-06-18T09:49:42.185765",
     "Pinnacle | Tour of Slovenia - Stage 3": "2026-06-19T07:25:08.267874",
@@ -35,6 +32,9 @@
     "MyStake | Tour of Belgium, Stage 5": "2026-06-21T09:04:31.916593",
     "MyStake | Andorra MoraBanc Classic Outright": "2026-06-21T09:04:31.916593",
     "Sportaza | Tour de France": "2026-06-22T19:40:39.645443",
-    "MyStake | 2026 season Outright": "2026-06-24T00:16:55.730318"
+    "MyStake | 2026 season Outright": "2026-06-24T00:16:55.730318",
+    "Betify | France NC Time Trial, Women": "2026-06-25T07:59:01.956304",
+    "Pinnacle | Tour de France": "2026-06-25T07:59:01.956304",
+    "Betify | France NC Time Trial": "2026-06-25T07:59:01.956304"
   }
 }
