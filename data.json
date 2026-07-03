@@ -1,14 +1,5 @@
 {
   "competitions": {
-    "MyStake | Belgium National Championship - Time Trial Outright ": "2026-06-26T08:51:12.077854",
-    "MyStake | Great Britain NC - Road Race Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | Denmark NC - Road Race Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | Spain NC - Road Race Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | Italy - NC - Road Race Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | France NC - Road Race, Women Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | France NC - Road Race Outright": "2026-06-26T08:51:12.077854",
-    "MyStake | Practice 1": "2026-06-26T08:51:12.077854",
-    "MyStake | Belgium NC - Road Race Outright": "2026-06-26T08:51:12.077854",
     "MyStake | Practice 2": "2026-06-26T13:36:40.702911",
     "Betify | Tour de France": "2026-06-26T15:58:29.344342",
     "Pinnacle | Austrian Grand Prix - Qualifying": "2026-06-26T17:59:45.341938",
@@ -42,6 +33,7 @@
     "Betify | Tour de France, Stage 1": "2026-07-01T06:43:58.869937",
     "MyStake | Tour de France, Stage 1": "2026-07-01T10:34:10.103565",
     "Pinnacle | Tour de France": "2026-07-02T10:36:14.279028",
-    "MyStake | Race ": "2026-07-02T12:35:13.959578"
+    "MyStake | Race ": "2026-07-02T12:35:13.959578",
+    "MyStake | Practice 1": "2026-07-03T11:09:57.941389"
   }
 }
