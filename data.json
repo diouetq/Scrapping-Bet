@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Austrian Grand Prix - Qualifying": "2026-06-26T17:59:45.341938",
-    "Sportaza | Grande-Bretagne": "2026-06-26T17:59:45.341938",
     "Sportaza | Italie": "2026-06-26T20:02:50.680603",
     "Sportaza | France": "2026-06-26T20:02:50.680603",
     "Sportaza | Espagne": "2026-06-26T20:02:50.680603",
@@ -33,6 +31,7 @@
     "Pinnacle | Tour de France": "2026-07-02T10:36:14.279028",
     "MyStake | Race ": "2026-07-02T12:35:13.959578",
     "MyStake | Practice 1": "2026-07-03T11:09:57.941389",
-    "MyStake | Sprint Qualifying": "2026-07-03T15:26:35.687407"
+    "MyStake | Sprint Qualifying": "2026-07-03T15:26:35.687407",
+    "Betify | Tour de France": "2026-07-03T18:14:24.075684"
   }
 }
