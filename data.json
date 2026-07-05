@@ -1,6 +1,5 @@
 {
   "competitions": {
-    "MyStake | Race H2H": "2026-06-28T09:31:43.702966",
     "Betify | Britain NC Road Race": "2026-06-28T11:23:16.730978",
     "Sportaza | Tour de France": "2026-06-29T20:07:37.132055",
     "Pinnacle | Tour de France - Points Classification": "2026-06-29T21:43:39.474548",
@@ -31,6 +30,7 @@
     "Pinnacle | Tour de France - Stage 2": "2026-07-04T18:39:18.575120",
     "Pinnacle | British Grand Prix": "2026-07-04T19:53:50.148036",
     "Betify | Tour de France, Stage 2": "2026-07-04T22:50:57.861687",
-    "MyStake | Tour de France, Stage 2": "2026-07-05T08:33:26.059039"
+    "MyStake | Tour de France, Stage 2": "2026-07-05T08:33:26.059039",
+    "MyStake | Race H2H": "2026-07-05T10:50:23.949507"
   }
 }
