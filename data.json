@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "MyStake | Race H2H": "2026-07-19T08:57:05.708787",
-    "MyStake | Tour de France, Stage 15": "2026-07-19T08:57:05.708787",
     "Pinnacle | Tour de France - Stage 16": "2026-07-19T21:29:32.431465",
     "MyStake | Tour de France, Stage 16": "2026-07-20T07:52:07.400381",
     "Betify | Tour de France, Stage 16": "2026-07-21T04:29:10.709662",
@@ -28,6 +26,7 @@
     "Pinnacle | Hungary Grand Prix": "2026-07-25T19:50:49.428430",
     "Pinnacle | Tour de France - Stage 21": "2026-07-25T21:36:10.722523",
     "Betify | Tour de France, Stage 21": "2026-07-25T23:38:50.199554",
-    "MyStake | Tour de France, Stage 21": "2026-07-26T07:27:30.038269"
+    "MyStake | Tour de France, Stage 21": "2026-07-26T07:27:30.038269",
+    "MyStake | Race H2H": "2026-07-26T09:35:44.708685"
   }
 }
