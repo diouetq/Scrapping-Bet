@@ -1,6 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour de France, Stage 21": "2026-07-26T07:27:30.038269",
     "MyStake | Race H2H": "2026-07-26T09:35:44.708685",
     "Sportaza | Tour de l'Ain": "2026-07-27T20:05:44.579316",
     "Betify | Tour de l'Ain": "2026-07-28T07:10:25.763389",
@@ -48,6 +47,10 @@
     "Pinnacle | Tour De Pologne": "2026-08-02T07:18:25.359042",
     "MyStake | Tour de Pologne, Stage 1": "2026-08-02T07:18:25.359042",
     "MyStake | Circuit de Getxo Outright": "2026-08-02T07:18:25.359042",
-    "MyStake | Tour of Denmark, Stage 5": "2026-08-02T07:18:25.359042"
+    "MyStake | Tour of Denmark, Stage 5": "2026-08-02T07:18:25.359042",
+    "Betify | Tour of Denmark, Stage 5": "2026-08-02T09:27:25.469797",
+    "Betify | Tour de France, Women, Stage 2": "2026-08-02T09:27:25.469797",
+    "Betify | Circuit de Getxo": "2026-08-02T09:27:25.469797",
+    "Sportaza | Circuit de Getxo": "2026-08-02T09:27:25.469797"
   }
 }
