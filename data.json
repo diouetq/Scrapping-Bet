@@ -1,13 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour de lAin. Stage 3": "2026-07-30T08:50:37.519408",
-    "Pinnacle | Tour de France - Women": "2026-07-30T08:50:37.519408",
-    "MyStake | Tour de France,Women Outright": "2026-07-30T08:50:37.519408",
-    "MyStake | Tour de France,Women Stage 1": "2026-07-30T08:50:37.519408",
-    "Pinnacle | Clasica San Sebastian": "2026-07-30T08:50:37.519408",
-    "MyStake | Clasica Ciclista San Sebastian Outright": "2026-07-30T08:50:37.519408",
-    "MyStake | Tour of Denmark, Stage 2": "2026-07-30T08:50:37.519408",
-    "Pinnacle | Tour de France - Stage 1 - Women": "2026-07-30T08:50:37.519408",
     "Betify | Clasica San Sebastian": "2026-07-30T10:55:40.201941",
     "Betify | Tour de France, Women": "2026-07-30T14:52:36.345546",
     "Betify | Tour de France, Women, Stage 1": "2026-07-30T17:56:46.692319",
@@ -62,6 +54,10 @@
     "Pinnacle | Tour De Pologne - Stage 4": "2026-08-05T19:43:49.484724",
     "Pinnacle | Tour de France - Stage 6 - Women": "2026-08-05T20:47:41.084945",
     "Sportaza | Tour de France, Femmes": "2026-08-05T20:47:41.084945",
-    "Pinnacle | Vuelta a Burgos - Stage 3": "2026-08-05T20:47:41.084945"
+    "Pinnacle | Vuelta a Burgos - Stage 3": "2026-08-05T20:47:41.084945",
+    "MyStake | Tour de France,Women Stage 6": "2026-08-06T09:12:05.641323",
+    "MyStake | Tour de Pologne, Stage 4": "2026-08-06T09:12:05.641323",
+    "MyStake | Tour de France,Women Outright": "2026-08-06T09:12:05.641323",
+    "MyStake | Vuelta a Burgos, Stage 3": "2026-08-06T09:12:05.641323"
   }
 }
