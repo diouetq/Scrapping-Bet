@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Betify | Tour de France, Women, Stage 8": "2026-08-08T06:10:36.907132",
-    "Betify | Vuelta a Burgos, Stage 5": "2026-08-08T06:10:36.907132",
-    "Betify | Tour de Pologne, Stage 6": "2026-08-08T06:10:36.907132",
     "MyStake | Tour de France,Women Stage 8": "2026-08-08T07:15:31.713682",
     "MyStake | Vuelta a Burgos, Stage 5": "2026-08-08T07:15:31.713682",
     "MyStake | Tour de Pologne, Stage 6": "2026-08-08T07:15:31.713682",
@@ -36,6 +33,9 @@
     "Pinnacle | Czech Tour - Stage 3": "2026-08-14T19:32:13.123446",
     "Pinnacle | Hamburg Cyclassics": "2026-08-14T20:43:09.824874",
     "Betify | Czech Tour, Stage 3": "2026-08-14T23:15:15.082185",
-    "Betify | Arctic Race of Norway, Stage 3": "2026-08-15T01:45:10.501996"
+    "Betify | Arctic Race of Norway, Stage 3": "2026-08-15T01:45:10.501996",
+    "MyStake | Arctic Race of Norway, Stage 3": "2026-08-15T06:52:10.026230",
+    "MyStake | Czech Tour Stage 3": "2026-08-15T06:52:10.026230",
+    "MyStake | La Polynormande Outright": "2026-08-15T06:52:10.026230"
   }
 }
