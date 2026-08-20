@@ -1,11 +1,5 @@
 {
   "competitions": {
-    "MyStake | Arctic Race of Norway Outright": "2026-08-13T06:54:08.361044",
-    "MyStake | Czech Tour Outright": "2026-08-13T06:54:08.361044",
-    "MyStake | Arctic Race of Norway, Stage 1": "2026-08-13T06:54:08.361044",
-    "MyStake | Czech Tour Stage 1": "2026-08-13T06:54:08.361044",
-    "Betify | Arctic Race of Norway": "2026-08-13T06:54:08.361044",
-    "Betify | Arctic Race of Norway, Stage 1": "2026-08-13T06:54:08.361044",
     "Pinnacle | Czech Tour - Stage 2": "2026-08-13T19:18:28.653744",
     "Pinnacle | Arctic Race of Norway - Stage 2": "2026-08-13T19:18:28.653744",
     "Betify | Czech Tour, Stage 2": "2026-08-14T07:45:16.989359",
@@ -67,6 +61,12 @@
     "Betify | Renewi Tour, Stage 2": "2026-08-20T02:46:33.402904",
     "Pinnacle | Deutschland Tour - Stage 1": "2026-08-20T02:46:33.402904",
     "Betify | Tour of Britain, Stage 2, Women": "2026-08-20T04:20:27.400358",
-    "Betify | Tour du Limousin, Stage 3": "2026-08-20T04:20:27.400358"
+    "Betify | Tour du Limousin, Stage 3": "2026-08-20T04:20:27.400358",
+    "MyStake | Deutschland Tour Stage 1": "2026-08-20T07:03:59.042858",
+    "MyStake | Vuelta a Espana Outright\t": "2026-08-20T07:03:59.042858",
+    "MyStake | Tour du Limousin, Stage": "2026-08-20T07:03:59.042858",
+    "MyStake | Tour of Britain Women - Stage 2": "2026-08-20T07:03:59.042858",
+    "MyStake | Vuelta a Espana Stage 1": "2026-08-20T07:03:59.042858",
+    "MyStake | Renewi Tour Stage 2": "2026-08-20T07:03:59.042858"
   }
 }
