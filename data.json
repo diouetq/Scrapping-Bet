@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "MyStake | Arctic Race of Norway, Stage 3": "2026-08-15T06:52:10.026230",
-    "MyStake | Czech Tour Stage 3": "2026-08-15T06:52:10.026230",
-    "MyStake | La Polynormande Outright": "2026-08-15T06:52:10.026230",
     "Pinnacle | Arctic Race of Norway - Stage 4": "2026-08-15T19:49:49.781073",
     "Pinnacle | Czech Tour - Stage 4": "2026-08-15T19:49:49.781073",
     "Betify | Czech Tour, Stage 4": "2026-08-15T22:55:18.999150",
@@ -85,6 +82,10 @@
     "Pinnacle | Netherlands Grand Prix - Qualifying": "2026-08-21T22:18:02.615113",
     "Betify | Deutschland Tour, Stage 3": "2026-08-22T01:29:42.878176",
     "Betify | Renewi Tour, Stage 4": "2026-08-22T01:29:42.878176",
-    "Betify | Tour of Britain, Stage 4, Women": "2026-08-22T01:29:42.878176"
+    "Betify | Tour of Britain, Stage 4, Women": "2026-08-22T01:29:42.878176",
+    "MyStake | Renewi Tour Stage 4": "2026-08-22T06:57:49.576651",
+    "MyStake | Sprint Race": "2026-08-22T06:57:49.576651",
+    "MyStake | Deutschland Tour Stage 3": "2026-08-22T06:57:49.576651",
+    "MyStake | Tour of Britain Women - Stage 4": "2026-08-22T06:57:49.576651"
   }
 }
