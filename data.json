@@ -1,13 +1,5 @@
 {
   "competitions": {
-    "MyStake | Tour du Limousin, Stage 2": "2026-08-19T08:52:22.291204",
-    "Sportaza | Tour d'Allemagne": "2026-08-19T08:52:22.291204",
-    "MyStake | Deutschland Tour Outright": "2026-08-19T08:52:22.291204",
-    "MyStake | Tour of Britain - Women Outright": "2026-08-19T08:52:22.291204",
-    "MyStake | Deutschland Tour Prologue": "2026-08-19T08:52:22.291204",
-    "MyStake | Vuelta a Espana Mountain Classification H2H": "2026-08-19T08:52:22.291204",
-    "MyStake | Tour of Britain Women - Stage 1": "2026-08-19T08:52:22.291204",
-    "Sportaza | Tour de Grande-Bretagne (F)": "2026-08-19T08:52:22.291204",
     "Betify | Renewi Tour, Stage 1": "2026-08-19T09:21:27.001970",
     "Betify | Tour of Britain, Women": "2026-08-19T09:21:27.001970",
     "Betify | Tour of Britain, Stage 1, Women": "2026-08-19T09:21:27.001970",
@@ -84,6 +76,7 @@
     "Betify | La Vuelta a Espana, Stage 4": "2026-08-24T22:02:27.311536",
     "MyStake | La Vuelta A Espana Stage 4": "2026-08-25T06:40:15.612478",
     "Betify | La Vuelta a Espana, Stage 5": "2026-08-25T21:14:05.027616",
-    "Pinnacle | Vuelta a Espana - Stage 5": "2026-08-25T22:09:52.123405"
+    "Pinnacle | Vuelta a Espana - Stage 5": "2026-08-25T22:09:52.123405",
+    "MyStake | La Vuelta A Espana Stage 5": "2026-08-26T09:08:29.947113"
   }
 }
