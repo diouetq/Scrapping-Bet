@@ -1,12 +1,5 @@
 {
   "competitions": {
-    "MyStake | Sprint Qualifying": "2026-08-21T13:56:03.479539",
-    "Pinnacle | Tour of Britain - Women - Stage 4": "2026-08-21T18:50:22.823415",
-    "Pinnacle | Netherlands Grand Prix Sprint": "2026-08-21T19:17:48.767853",
-    "Pinnacle | Deutschland Tour - Stage 3": "2026-08-21T20:00:45.931478",
-    "Pinnacle | Renewi Tour - Stage 4": "2026-08-21T20:00:45.931478",
-    "Betify | La Vuelta a Espana, Stage 1": "2026-08-21T22:18:02.615113",
-    "Pinnacle | Netherlands Grand Prix - Qualifying": "2026-08-21T22:18:02.615113",
     "Betify | Deutschland Tour, Stage 3": "2026-08-22T01:29:42.878176",
     "Betify | Renewi Tour, Stage 4": "2026-08-22T01:29:42.878176",
     "Betify | Tour of Britain, Stage 4, Women": "2026-08-22T01:29:42.878176",
@@ -43,6 +36,9 @@
     "Pinnacle | Vuelta a Espana - Stage 7": "2026-08-28T00:36:00.960523",
     "Betify | La Vuelta a Espana, Stage 7": "2026-08-28T00:36:00.960523",
     "MyStake | Vuelta a Espana Outright\t": "2026-08-28T00:36:00.960523",
-    "Sportaza | Tour d'Espagne": "2026-08-28T00:36:00.960523"
+    "Sportaza | Tour d'Espagne": "2026-08-28T00:36:00.960523",
+    "Pinnacle | Vuelta a Espana - Stage 8": "2026-08-28T22:24:47.592765",
+    "Betify | La Vuelta a Espana, Stage 8": "2026-08-28T22:24:47.592765",
+    "Betify | Classic Lorient Agglomeration": "2026-08-28T22:24:47.592765"
   }
 }
