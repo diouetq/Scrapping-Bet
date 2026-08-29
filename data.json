@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | Renewi Tour Stage 4": "2026-08-22T06:57:49.576651",
-    "MyStake | Sprint Race": "2026-08-22T06:57:49.576651",
-    "MyStake | Deutschland Tour Stage 3": "2026-08-22T06:57:49.576651",
-    "MyStake | Tour of Britain Women - Stage 4": "2026-08-22T06:57:49.576651",
     "Pinnacle | Netherlands Grand Prix": "2026-08-22T17:30:47.869443",
     "Pinnacle | Tour of Britain - Women - Stage 5": "2026-08-22T18:52:49.745477",
     "Pinnacle | Vuelta a Espana - Stage 2": "2026-08-22T19:57:49.729283",
@@ -36,6 +32,9 @@
     "Sportaza | Tour d'Espagne": "2026-08-28T00:36:00.960523",
     "Pinnacle | Vuelta a Espana - Stage 8": "2026-08-28T22:24:47.592765",
     "Betify | La Vuelta a Espana, Stage 8": "2026-08-28T22:24:47.592765",
-    "Betify | Classic Lorient Agglomeration": "2026-08-28T22:24:47.592765"
+    "Betify | Classic Lorient Agglomeration": "2026-08-28T22:24:47.592765",
+    "MyStake | Bretagne Classic Outright": "2026-08-29T10:29:46.039782",
+    "MyStake | La Vuelta A Espana Stage 8": "2026-08-29T10:29:46.039782",
+    "Pinnacle | Bretagne Classic": "2026-08-29T10:29:46.039782"
   }
 }
