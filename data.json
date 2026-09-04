@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Vuelta a Espana - Stage 7": "2026-08-28T00:36:00.960523",
-    "Betify | La Vuelta a Espana, Stage 7": "2026-08-28T00:36:00.960523",
-    "MyStake | Vuelta a Espana Outright\t": "2026-08-28T00:36:00.960523",
-    "Sportaza | Tour d'Espagne": "2026-08-28T00:36:00.960523",
     "Pinnacle | Vuelta a Espana - Stage 8": "2026-08-28T22:24:47.592765",
     "Betify | La Vuelta a Espana, Stage 8": "2026-08-28T22:24:47.592765",
     "Betify | Classic Lorient Agglomeration": "2026-08-28T22:24:47.592765",
@@ -42,6 +38,11 @@
     "Sportaza | ZLM Tour": "2026-09-03T09:17:16.745030",
     "Pinnacle | Vuelta a Espana - Stage 13": "2026-09-03T22:24:27.401736",
     "Pinnacle | ZLM Tour - Stage 3": "2026-09-03T22:24:27.401736",
-    "Pinnacle | Tour Of Britain - Stage 3": "2026-09-03T22:24:27.401736"
+    "Pinnacle | Tour Of Britain - Stage 3": "2026-09-03T22:24:27.401736",
+    "Betify | Tour of Britain, Stage 3": "2026-09-04T04:43:52.417751",
+    "Betify | La Vuelta a Espana, Stage 13": "2026-09-04T04:43:52.417751",
+    "Betify | ZLM Tour, Stage 3": "2026-09-04T04:43:52.417751",
+    "Sportaza | Tour d'Espagne": "2026-09-04T04:43:52.417751",
+    "MyStake | Vuelta a Espana Outright\t": "2026-09-04T04:43:52.417751"
   }
 }
