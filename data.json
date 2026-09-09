@@ -1,11 +1,5 @@
 {
   "competitions": {
-    "MyStake | La Vuelta A Espana Stage 11": "2026-09-02T09:08:06.153430",
-    "Sportaza | Tour de Grande-Bretagne": "2026-09-02T09:08:06.153430",
-    "MyStake | Tour of Britain, Stage 1": "2026-09-02T09:08:06.153430",
-    "MyStake | Tour of Britain Outright": "2026-09-02T09:08:06.153430",
-    "MyStake | ZLM Tour Outright": "2026-09-02T09:08:06.153430",
-    "MyStake | ZLM Tour, Stage 1": "2026-09-02T09:08:06.153430",
     "MyStake | 2026 season Outright": "2026-09-02T13:37:16.348766",
     "Pinnacle | ZLM Tour - Stage 2": "2026-09-02T19:54:50.073851",
     "Pinnacle | Tour Of Britain - Stage 2": "2026-09-02T19:54:50.073851",
@@ -54,6 +48,8 @@
     "MyStake | Race ": "2026-09-07T16:07:22.818604",
     "Sportaza | Giro  della Toscana": "2026-09-08T22:49:25.451279",
     "Betify | La Vuelta a Espana, Stage 17": "2026-09-09T00:45:15.680386",
-    "Betify | Giro della Toscana": "2026-09-09T05:23:16.480507"
+    "Betify | Giro della Toscana": "2026-09-09T05:23:16.480507",
+    "MyStake | Giro della Toscana Outright": "2026-09-09T09:58:33.434262",
+    "MyStake | La Vuelta A Espana Stage 17": "2026-09-09T09:58:33.434262"
   }
 }
