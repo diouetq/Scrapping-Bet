@@ -1,11 +1,5 @@
 {
   "competitions": {
-    "MyStake | ZLM Tour, Stage 5": "2026-09-06T07:12:51.284853",
-    "MyStake | Tour of Britain, Stage 5": "2026-09-06T07:12:51.284853",
-    "Betify | GP Industria & Artigianato": "2026-09-06T07:12:51.284853",
-    "Pinnacle | GP Industria and Artigianato": "2026-09-06T07:12:51.284853",
-    "MyStake | Race H2H": "2026-09-06T07:12:51.284853",
-    "MyStake | La Vuelta A Espana Stage 15": "2026-09-06T07:12:51.284853",
     "Pinnacle | Vuelta a Espana - Stage 16": "2026-09-06T21:27:29.739303",
     "Betify | La Vuelta a Espana, Stage 16": "2026-09-06T23:02:47.467259",
     "MyStake | La Vuelta A Espana Stage 16": "2026-09-07T10:46:14.535043",
@@ -35,6 +29,10 @@
     "Sportaza | GP de Fourmies": "2026-09-12T08:54:19.181097",
     "Betify | GP de Fourmies": "2026-09-12T15:49:43.593134",
     "Betify | GP de Montreal": "2026-09-13T04:40:46.203535",
-    "Betify | La Vuelta a Espana, Stage 21": "2026-09-13T04:40:46.203535"
+    "Betify | La Vuelta a Espana, Stage 21": "2026-09-13T04:40:46.203535",
+    "MyStake | Race H2H": "2026-09-13T09:45:59.478008",
+    "Sportaza | Grand Prix Cycliste de Montreal": "2026-09-13T09:45:59.478008",
+    "MyStake | La Vuelta A Espana Stage 21": "2026-09-13T09:45:59.478008",
+    "MyStake | Grand Prix de Montreal Outright": "2026-09-13T09:45:59.478008"
   }
 }
