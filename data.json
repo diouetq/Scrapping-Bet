@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "MyStake | Vuelta a Espana Outright\t": "2026-09-11T05:05:29.204125",
-    "Sportaza | Tour d'Espagne": "2026-09-11T05:05:29.204125",
     "MyStake | Practice 1": "2026-09-11T09:36:34.874997",
     "MyStake | La Vuelta A Espana Stage 19": "2026-09-11T09:36:34.874997",
     "MyStake | Practice 2": "2026-09-11T13:49:44.410485",
@@ -31,6 +29,8 @@
     "MyStake | World Championship - Time Trial - H2H": "2026-09-17T06:47:15.206658",
     "Betify | Tour de Luxembourg, Stage 2": "2026-09-17T06:47:15.206658",
     "MyStake | Giro d Abruzzo stage 3": "2026-09-17T06:47:15.206658",
-    "MyStake | Tour de Luxembourg Stage 2": "2026-09-17T06:47:15.206658"
+    "MyStake | Tour de Luxembourg Stage 2": "2026-09-17T06:47:15.206658",
+    "Betify | Giro d Abruzzo, Stage 4": "2026-09-18T05:50:04.990068",
+    "Betify | Tour de Luxembourg, Stage 3": "2026-09-18T05:50:04.990068"
   }
 }
