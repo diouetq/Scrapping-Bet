@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | Race H2H": "2026-09-13T09:45:59.478008",
-    "Sportaza | Grand Prix Cycliste de Montreal": "2026-09-13T09:45:59.478008",
-    "MyStake | La Vuelta A Espana Stage 21": "2026-09-13T09:45:59.478008",
-    "MyStake | Grand Prix de Montreal Outright": "2026-09-13T09:45:59.478008",
     "Betify | Giro d Abruzzo": "2026-09-15T00:52:39.837397",
     "Sportaza | Giro dAbruzzo": "2026-09-15T10:28:53.260461",
     "Betify | Giro d Abruzzo, Stage 2": "2026-09-16T00:18:57.745783",
@@ -36,6 +32,7 @@
     "Betify | World Championships - Time Trial, Women": "2026-09-20T01:09:11.205909",
     "Betify | World Championships - Time Trial": "2026-09-20T06:15:17.749484",
     "MyStake | Tour de Luxembourg Stage 5": "2026-09-20T06:15:17.749484",
-    "Betify | Tour de Luxembourg, Stage 5": "2026-09-20T06:15:17.749484"
+    "Betify | Tour de Luxembourg, Stage 5": "2026-09-20T06:15:17.749484",
+    "MyStake | Race ": "2026-09-20T11:33:32.094138"
   }
 }
