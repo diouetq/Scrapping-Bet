@@ -1,9 +1,5 @@
 {
   "competitions": {
-    "MyStake | World Championship - Time Trial - H2H": "2026-09-17T06:47:15.206658",
-    "Betify | Tour de Luxembourg, Stage 2": "2026-09-17T06:47:15.206658",
-    "MyStake | Giro d Abruzzo stage 3": "2026-09-17T06:47:15.206658",
-    "MyStake | Tour de Luxembourg Stage 2": "2026-09-17T06:47:15.206658",
     "Betify | Giro d Abruzzo, Stage 4": "2026-09-18T05:50:04.990068",
     "Betify | Tour de Luxembourg, Stage 3": "2026-09-18T05:50:04.990068",
     "MyStake | Tour de Luxembourg Stage 3": "2026-09-18T10:06:37.831197",
@@ -40,6 +36,8 @@
     "MyStake | Practice 1": "2026-09-23T15:34:33.009052",
     "MyStake | 2026 season Outright": "2026-09-23T15:34:33.009052",
     "Betify | Cro Race, Stage 3": "2026-09-23T19:14:15.216410",
-    "Betify | World Championships - Road Race, Women": "2026-09-24T05:25:25.576068"
+    "Betify | World Championships - Road Race, Women": "2026-09-24T05:25:25.576068",
+    "Sportaza | UCI Championnat du Monde (F)": "2026-09-24T10:22:04.810401",
+    "Sportaza | UCI Championnat du Monde": "2026-09-24T10:22:04.810401"
   }
 }
