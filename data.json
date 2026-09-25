@@ -1,13 +1,5 @@
 {
   "competitions": {
-    "Betify | Giro d Abruzzo, Stage 4": "2026-09-18T05:50:04.990068",
-    "Betify | Tour de Luxembourg, Stage 3": "2026-09-18T05:50:04.990068",
-    "MyStake | Tour de Luxembourg Stage 3": "2026-09-18T10:06:37.831197",
-    "MyStake | Kampioenschap van Vlaanderen Outright": "2026-09-18T10:06:37.831197",
-    "MyStake | World Championship - Time Trial Women - H2H": "2026-09-18T10:06:37.831197",
-    "Betify | Kampioenschap van Vlaanderen": "2026-09-18T10:06:37.831197",
-    "MyStake | U23 World Championships - Time Trial": "2026-09-18T10:06:37.831197",
-    "Sportaza | Championnat de Flandre": "2026-09-18T10:06:37.831197",
     "Sportaza | Time Trial (W)": "2026-09-18T14:29:09.098501",
     "Sportaza | Time Trial": "2026-09-18T17:50:53.108412",
     "Betify | Flandrien 0.0 Classic": "2026-09-18T22:32:42.163521",
@@ -44,6 +36,7 @@
     "Pinnacle | Azerbaijan Grand Prix - Qualifying": "2026-09-25T00:47:11.138083",
     "Pinnacle | CRO Race - Stage 4": "2026-09-25T00:47:11.138083",
     "Betify | U23 World Championships - Road Race": "2026-09-25T05:30:15.280819",
-    "Betify | Cro Race, Stage 4": "2026-09-25T05:30:15.280819"
+    "Betify | Cro Race, Stage 4": "2026-09-25T05:30:15.280819",
+    "Pinnacle | World Championship Women Road Race": "2026-09-25T10:31:06.729520"
   }
 }
