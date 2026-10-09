@@ -1,8 +1,5 @@
 {
   "competitions": {
-    "Betify | Sparkassen Munsterland Giro": "2026-10-02T18:32:00.969823",
-    "Betify | European Championships - Road Race Women": "2026-10-02T18:32:00.969823",
-    "Betify | Cholet Agglo Tour": "2026-10-02T18:32:00.969823",
     "Pinnacle | Cholet Agglo Tour": "2026-10-03T01:24:41.810490",
     "Pinnacle | European Championship Road Race": "2026-10-03T01:24:41.810490",
     "Pinnacle | Bahrain Grand Prix - Qualifying": "2026-10-03T01:24:41.810490",
@@ -47,6 +44,7 @@
     "MyStake | Practice 1": "2026-10-08T18:59:57.908838",
     "MyStake | IL Lombardia Outright": "2026-10-08T18:59:57.908838",
     "Pinnacle | Il Lombardia": "2026-10-08T23:43:53.730663",
-    "Sportaza | Overall, World Cup": "2026-10-09T17:10:14.158299"
+    "Sportaza | Overall, World Cup": "2026-10-09T17:10:14.158299",
+    "Betify | Il Lombardia": "2026-10-09T21:42:29.788140"
   }
 }
