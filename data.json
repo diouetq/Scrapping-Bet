@@ -1,12 +1,5 @@
 {
   "competitions": {
-    "Sportaza | Sparkassen Munsterland Giro": "2026-10-02T13:16:46.144029",
-    "MyStake | European Championship Road Race": "2026-10-02T13:16:46.144029",
-    "MyStake | Sparkassen Munsterland Giro Outright": "2026-10-02T13:16:46.144029",
-    "MyStake | Practice 3": "2026-10-02T13:16:46.144029",
-    "MyStake | Tour de Vendee Outright": "2026-10-02T13:16:46.144029",
-    "MyStake | European Championships - Road Race Women H2H": "2026-10-02T13:16:46.144029",
-    "MyStake | Cholet Agglo Tour Outright": "2026-10-02T13:16:46.144029",
     "Betify | Sparkassen Munsterland Giro": "2026-10-02T18:32:00.969823",
     "Betify | European Championships - Road Race Women": "2026-10-02T18:32:00.969823",
     "Betify | Cholet Agglo Tour": "2026-10-02T18:32:00.969823",
@@ -53,6 +46,7 @@
     "Pinnacle | Gran Piemonte": "2026-10-08T00:00:34.683992",
     "MyStake | Practice 1": "2026-10-08T18:59:57.908838",
     "MyStake | IL Lombardia Outright": "2026-10-08T18:59:57.908838",
-    "Pinnacle | Il Lombardia": "2026-10-08T23:43:53.730663"
+    "Pinnacle | Il Lombardia": "2026-10-08T23:43:53.730663",
+    "Sportaza | Overall, World Cup": "2026-10-09T17:10:14.158299"
   }
 }
