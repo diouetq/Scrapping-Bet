@@ -1,7 +1,5 @@
 {
   "competitions": {
-    "Betify | Coppa Agostoni": "2026-10-03T19:17:03.004905",
-    "Sportaza | Tour de Vendee": "2026-10-03T19:17:03.004905",
     "Pinnacle | Coppa Agostoni": "2026-10-03T22:13:18.966225",
     "Betify | Tour de Vendee": "2026-10-04T00:42:12.149646",
     "Betify | European Championships - Road Race": "2026-10-04T00:42:12.149646",
@@ -37,6 +35,8 @@
     "Betify | Il Lombardia": "2026-10-09T21:42:29.788140",
     "Pinnacle | Singapore Grand Prix - Qualifying": "2026-10-10T01:18:22.471503",
     "Pinnacle | Singapore Grand Prix - Sprint": "2026-10-10T01:18:22.471503",
-    "MyStake | Sprint Race": "2026-10-10T07:17:58.741944"
+    "MyStake | Sprint Race": "2026-10-10T07:17:58.741944",
+    "Pinnacle | Singapore Grand Prix": "2026-10-10T21:39:08.128300",
+    "Sportaza | Paris-Tours": "2026-10-10T21:39:08.128300"
   }
 }
