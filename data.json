@@ -1,10 +1,5 @@
 {
   "competitions": {
-    "MyStake | Coppa Bernocchi Outright": "2026-10-05T08:44:36.385255",
-    "Sportaza | Coppa Bernocchi": "2026-10-05T08:44:36.385255",
-    "MyStake | European Championship - Time Trial": "2026-10-05T08:44:36.385255",
-    "MyStake | Tre Valli Varesine Outright": "2026-10-05T08:44:36.385255",
-    "MyStake | European Championships Women  - Time Trial": "2026-10-05T08:44:36.385255",
     "MyStake | Race ": "2026-10-05T17:27:46.850861",
     "Betify | Tre Valli Varesine, Women": "2026-10-05T23:20:02.106599",
     "Betify | Tre Valli Varesine": "2026-10-05T23:20:02.106599",
@@ -39,6 +34,7 @@
     "Betify | Tour of Guangxi": "2026-10-12T06:53:16.324324",
     "MyStake | Tour of Guangxi Outright": "2026-10-12T06:53:16.324324",
     "MyStake | Tour of Guangxi Outright - Stage 1\t": "2026-10-12T06:53:16.324324",
-    "Betify | Tour of Guangxi, Stage 1": "2026-10-12T06:53:16.324324"
+    "Betify | Tour of Guangxi, Stage 1": "2026-10-12T06:53:16.324324",
+    "Sportaza | Tour du Guangxi": "2026-10-12T16:25:08.402996"
   }
 }
