@@ -1,6 +1,5 @@
 {
   "competitions": {
-    "MyStake | Sprint Race": "2026-10-10T07:17:58.741944",
     "Pinnacle | Singapore Grand Prix": "2026-10-10T21:39:08.128300",
     "Sportaza | Paris-Tours": "2026-10-10T21:39:08.128300",
     "MyStake | Race H2H": "2026-10-11T06:20:33.273553",
@@ -45,6 +44,11 @@
     "Pinnacle | Tour Of Guangxi - Stage 5": "2026-10-16T18:52:30.337239",
     "Pinnacle | Veneto Classic": "2026-10-16T18:52:30.337239",
     "Pinnacle | Chrono des Nations": "2026-10-17T00:00:31.774070",
-    "Pinnacle | Japan Cup Road Race": "2026-10-17T00:00:31.774070"
+    "Pinnacle | Japan Cup Road Race": "2026-10-17T00:00:31.774070",
+    "MyStake | Race ": "2026-10-17T08:36:59.774828",
+    "MyStake | Veneto Classic Outright": "2026-10-17T08:36:59.774828",
+    "MyStake | Chrono des Nations Outright": "2026-10-17T08:36:59.774828",
+    "MyStake | Japan Cup Outright": "2026-10-17T08:36:59.774828",
+    "MyStake | Eneco Tour stage 4": "2026-10-17T08:36:59.774828"
   }
 }
