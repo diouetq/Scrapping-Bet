@@ -1,10 +1,5 @@
 {
   "competitions": {
-    "Pinnacle | Eneco Tour": "2026-10-13T11:03:05.338431",
-    "Pinnacle | Eneco Tour - Prologue": "2026-10-13T11:03:05.338431",
-    "MyStake | Eneco Tour Outright": "2026-10-13T11:03:05.338431",
-    "MyStake | Eneco Tour Prologue": "2026-10-13T11:03:05.338431",
-    "Sportaza | Eneco Tour": "2026-10-13T11:03:05.338431",
     "Pinnacle | Tour Of Guangxi - Stage 2": "2026-10-13T22:47:11.792528",
     "Pinnacle | Giro Del Veneto": "2026-10-13T22:47:11.792528",
     "Betify | Giro Del Veneto": "2026-10-13T22:47:11.792528",
@@ -44,6 +39,9 @@
     "Pinnacle | Eneco Tour - Stage 5": "2026-10-17T20:29:02.573045",
     "Betify | Eneco Tour, Stage 5": "2026-10-18T04:47:30.279544",
     "Betify | Chrono des Nations": "2026-10-18T04:47:30.279544",
-    "MyStake | Eneco Tour stage 5": "2026-10-18T09:10:30.102671"
+    "MyStake | Eneco Tour stage 5": "2026-10-18T09:10:30.102671",
+    "Betify | Soelden, Women": "2026-10-20T12:19:23.717841",
+    "Betify | Soelden": "2026-10-20T12:19:23.717841",
+    "Sportaza | Slalom géant, Sölden": "2026-10-20T12:19:23.717841"
   }
 }
